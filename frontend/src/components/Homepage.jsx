@@ -9,6 +9,7 @@ import { Card, CardContent, CardMedia, Grid2 } from "@mui/material";
 
 const Homepage = () => {
   return (
+    // Navbar and Logo
     <div className="container">
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
@@ -54,6 +55,7 @@ const Homepage = () => {
         </AppBar>
       </Box>
 
+{/* Hero Section */}
       <Box sx={{ flexGrow: 1 }} style={{ marginTop: "3%" }}>
         <Grid2 container spacing={2}>
           <Grid2 size={6}>
@@ -62,7 +64,7 @@ const Homepage = () => {
                 boxShadow: "none",
               }}
             >
-              <CardMedia sx={{ height: 400 }} image="src/images/cover.jpg" />
+              <CardMedia sx={{ height: 450 }} image="src/images/cover.jpg" />
             </Card>
           </Grid2>
           <Grid2 size={6}>
@@ -95,6 +97,86 @@ const Homepage = () => {
               <br /> 
             </Card>
             <button style={{marginLeft:"50px"}}>Login</button>
+          </Grid2>
+        </Grid2>
+      </Box>
+
+      {/* Other Contents */}
+      <Box sx={{ flexGrow: 1 }} style={{ marginTop: "3%" }}>
+        <Grid2 container spacing={2}>
+          <Grid2 size={3}>
+            <Card
+              sx={{
+                boxShadow: "none",
+                margin:"10px"
+              }}
+            >
+              <CardMedia sx={{ height: 300 }} image="src/images/admin.jpg" />
+            </Card>
+          </Grid2>
+          <Grid2 size={3}>
+            <Card
+              sx={{
+                marginTop:"50px",
+                marginLeft: "10px",
+                boxShadow: "none",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "rgb(0, 153, 204)",
+                  fontWeight: 600,
+                  fontSize: "2rem",
+                  textAlign: "left",
+                  marginTop: "5px",
+                  lineHeight: "1.1",
+                }}
+              >
+                Admin <br/> Dashboard
+              </Typography>
+              <br />
+              <Typography>
+                A Dashboard where you can add more mentors and projects. 
+              </Typography>
+              <br /> 
+            </Card>
+          </Grid2>
+
+          <Grid2 size={3}>
+            <Card
+              sx={{
+                boxShadow: "none",
+              }}
+            >
+              <CardMedia sx={{ height: 300}} image="src/images/mentor.jpg" />
+            </Card>
+          </Grid2>
+          <Grid2 size={3}>
+            <Card
+              sx={{
+                marginLeft: "10px",
+                marginTop:"50px",
+                boxShadow: "none",
+              }}
+            >
+              <Typography
+                sx={{
+                  color: "rgb(0, 153, 204)",
+                  fontWeight: 600,
+                  fontSize: "2rem",
+                  textAlign: "left",
+                  marginTop: "5px",
+                  lineHeight: "1.1",
+                }}
+              >
+                Mentor <br/>Dashboard
+              </Typography>
+              <br />
+              <Typography>
+              A Dashboard where you can add more mentors and projects. 
+              </Typography>
+              <br /> 
+            </Card>
           </Grid2>
         </Grid2>
       </Box>
