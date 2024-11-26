@@ -22,7 +22,7 @@ const MentorDashboard = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Mentor Dashboard
           </Typography>
-          <Button color="inherit">Logout</Button>
+          <Button className="button">Logout</Button>
         </Toolbar>
       </AppBar>
 
@@ -114,10 +114,10 @@ const MentorDashboard = () => {
             sx={{ mt: 2 }}
           />
           <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
-            <Button variant="contained" color="primary">
+            <Button className="button">
               Add Material
             </Button>
-            <Button variant="outlined" color="error">
+            <Button className="button">
               Delete Material
             </Button>
           </div>

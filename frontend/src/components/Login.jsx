@@ -69,7 +69,7 @@ const Login = () => {
         />
         <br />
         <br />
-        <button>Login</button>
+        <Button className="button">Login</Button>
       </Box>
     </div>
   );
