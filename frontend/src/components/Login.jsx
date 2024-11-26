@@ -3,9 +3,8 @@ import React from "react";
 
 const Login = () => {
   return (
-    <div id="d1">
-
-<Box sx={{ flexGrow: 1 }}>
+    <div  className="container">
+<Box sx={{ flexGrow: 1, }}>
         <AppBar
           position="static"
           sx={{
@@ -48,7 +47,6 @@ const Login = () => {
           </Toolbar>
         </AppBar>
       </Box>
-
       <Box id="bo1" component="section">
         <Typography className="login">Login</Typography>
         <br/><br/>
