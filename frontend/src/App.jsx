@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
+import Login from "./components/Login";
 
 const theme = createTheme({
   typography: {
@@ -17,6 +18,8 @@ function App() {
       <CssBaseline/>
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+
       </Routes>
       </ThemeProvider>
     </>

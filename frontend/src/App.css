@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-body {
-  font-family: "Poppins", sans-serif !important;
+body{
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden;
 }
-
 .container {
   width: 90%;
   margin: 0 auto;
@@ -17,7 +18,7 @@ body {
   margin-right: 10px;
 }
 button {
-  background-color:rgb(0, 153, 204);
+  background-color: #0099cc;
   color: white;
   font-weight: bold;
   border-radius: 30px;
@@ -31,4 +32,21 @@ button {
 button:hover {
   background-color: #ff6536;
   box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.4);
+}
+#d1 {
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+#bo1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  margin-top: 7%;
+}
+.login {
+  font-size: 2.5rem !important; 
+  font-weight: 500 !important; 
+  color: #0099cc; 
 }

@@ -3,9 +3,8 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import { margin, styled, textAlign } from "@mui/system";
-import { Card, CardContent, CardMedia, Grid2 } from "@mui/material";
+import { Card, CardMedia, Grid2 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
   return (
@@ -49,8 +48,8 @@ const Homepage = () => {
               >
                 PROJECT PORTAL
               </Typography>
-            </Box>
-            <button>Login</button>
+            </Box><Link to={'/login'}>
+            <button>Login</button></Link>
           </Toolbar>
         </AppBar>
       </Box>
@@ -95,8 +94,8 @@ const Homepage = () => {
                 statewide.
               </Typography>
               <br /> 
-            </Card>
-            <button style={{marginLeft:"50px"}}>Login</button>
+            </Card><Link to={'/login'}>
+            <button style={{marginLeft:"50px"}}>Login</button></Link>
           </Grid2>
         </Grid2>
       </Box>
