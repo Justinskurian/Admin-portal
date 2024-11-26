@@ -4,6 +4,7 @@ import Homepage from "./components/Homepage";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import Login from "./components/Login";
+import MentorDashboard from "./components/MentorDash";
 
 const theme = createTheme({
   typography: {
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/mentordash" element={<MentorDashboard />} />
 
       </Routes>
       </ThemeProvider>
