@@ -24,7 +24,6 @@ function App() {
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/mentordash" element={<MentorDashboard />} />
-        <Route path="/mentorform" element={<MentorForm/>}/>
         <Route path="/admindash" element={<AdminDashboard/>}/>
         <Route path="/projecttopic" element={<ProjectTopicForm/>}/>
 
