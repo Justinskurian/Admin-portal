@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './AdminDashboard.css';
+import '../AdminDashboard.css';
 
 const AdminDashboard = () => {
   const [projectTopics, setProjectTopics] = useState([]);
