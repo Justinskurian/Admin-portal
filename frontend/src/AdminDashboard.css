@@ -1,0 +1,79 @@
+
+.admin-dashboard {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #4CAF50;
+  }
+  
+  h3 {
+    color: #333;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  li {
+    margin: 8px 0;
+    font-size: 16px;
+  }
+  
+  button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  button:hover {
+    background-color: #d32f2f;
+  }
+  
+  .add-btn {
+    background-color: #4CAF50;
+  }
+  
+  .add-btn:hover {
+    background-color: #388E3C;
+  }
+  
+  .delete-btn {
+    background-color: #f44336;
+  }
+  
+  .delete-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  .form-container {
+    margin: 20px 0;
+  }
+  
+  input {
+    margin: 5px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    width: 250px;
+    margin-right: 10px;
+  }
+  
+  .logout-btn {
+    background-color: #008CBA;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    float: right;
+  }
+  
+  .logout-btn:hover {
+    background-color: #007B9C;
+  }
+  
