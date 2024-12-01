@@ -74,7 +74,7 @@ const MentorDashboard = () => {
           
                   <TableRow>
                     <TableCell>
-                      <TextField placeholder="Student Name" size="small" />
+                      <TextField placeholder="Name" size="small" />
                     </TableCell>
                     <TableCell>
                       <TextField placeholder="Status" size="small" />
