@@ -28,4 +28,6 @@ const mentorSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Mentor', mentorSchema);;
+
+const mentor=mongoose.model('mentors',mentorSchema);;
+module.exports = mentor;
