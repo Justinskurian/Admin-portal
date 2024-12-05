@@ -1,31 +1,28 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+const bcrypt = require('bcrypt');
 
 const adminModel = require("../models/admin");
 router.use(express.json());
 
 router.post("/login", async (req, res) => {
   try {
-    const user = await adminModel.findOne({ email: req.body.email });
-    const payload = { email: "admin123@gmail.com", password: "Admin123" };
+    const admin = await adminModel.findOne({ email: req.body.email });
 
-    if (
-      req.body.email == "admin123@gmail.com" &&
-      req.body.password == "Admin123"
-    ) {
-      const token = jwt.sign(payload, "blogApp");
-      console.log(token);
-      res.status(200).send({ message: "Login successful", token: token });
-    } else if (user.password == req.body.password) {
-      res.status(200).send({ message: "Login successful" });
-    } else if (!user) {
+    if (!admin) {
       res.status(201).send({ message: "User not found" });
-    } else {
-      res.status(404).send("Invalid credentials");
+    }
+    else if (
+      admin.email==req.body.email &&
+      admin.password == req.body.password
+    ) {
+      const payload = { email: admin.email, password:admin.password};
+      const token = jwt.sign(payload, process.env.jwt, { expiresIn: "1h" });
+      res.status(200).send({ message: "Login successful", token: token });
     }
   } catch (error) {
-    console.log(error);
+    res.status(500).send({ message: "Internal Server Error" });
   }
 });
 
