@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
+const bcrypt = require('bcrypt');
 
 const adminModel = require("../models/admin");
 const mentorModel = require("../models/mentor");
@@ -9,6 +10,7 @@ router.use(express.json());
 
 router.post("/login", async (req, res) => {
   try {
+<<<<<<< HEAD
     const user = await mentorModel.findOne({ email: req.body.email });
     
     const payload = { email: "admin123@gmail.com", password: "Admin123" };
@@ -30,9 +32,23 @@ router.post("/login", async (req, res) => {
 
      else {
       res.status(404).send({ message: "Invalid credentials"});
+=======
+    const admin = await adminModel.findOne({ email: req.body.email });
+
+    if (!admin) {
+      res.status(201).send({ message: "User not found" });
+    }
+    else if (
+      admin.email==req.body.email &&
+      admin.password == req.body.password
+    ) {
+      const payload = { email: admin.email, password:admin.password};
+      const token = jwt.sign(payload, process.env.jwt, { expiresIn: "1h" });
+      res.status(200).send({ message: "Login successful", token: token });
+>>>>>>> 1eabcbb8ccef03d7970daefed9c5e5e16a805050
     }
   } catch (error) {
-    console.log(error);
+    res.status(500).send({ message: "Internal Server Error" });
   }
 });
 
