@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 
 const mentorSchema = new mongoose.Schema({
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  phone: { type: String, required: true },
-  password: { type: String, required: true },
+  name: String,
+  email:{ type:String, unique: true},
+
+  phone: Number,
+  password: String,
   projects: [
     {
       title: { type: String, required: true },
@@ -23,7 +24,9 @@ const mentorSchema = new mongoose.Schema({
       ],
     },
   ],
+
 });
 
 const mentor = mongoose.model("mentors", mentorSchema);
+
 module.exports = mentor;

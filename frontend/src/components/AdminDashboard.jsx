@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../AdminDashboard.css';
+import { Link } from 'react-router-dom'
 
 const AdminDashboard = () => {
   const [projectTopics, setProjectTopics] = useState([]);
@@ -41,7 +42,12 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       <h2>Admin Dashboard</h2>
-      <button onClick={handleLogout} className="logout-btn">Logout</button>
+      <Link to={'/login'}> <button onClick={handleLogout} className="logout-btn" onClick={()=>{
+        sessionStorage.removeItem('token');
+
+      }}>Logout</button></Link>
+      
+      
 
       <section>
         <h3>Project Topics</h3>

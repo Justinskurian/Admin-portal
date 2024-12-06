@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AppBar,  Toolbar,  Typography,  Container,  Card,  CardContent,  CardActions,  Button,  TextField,  Table,  TableBody,  TableCell,  TableContainer,  TableHead,  TableRow,  Select, MenuItem,  InputLabel, FormControl,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const MentorDashboard = () => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -22,7 +23,7 @@ const MentorDashboard = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Mentor Dashboard
           </Typography>
-          <Button className="button">Logout</Button>
+         <Link to={'/login'}><Button className="button">Logout</Button></Link>
         </Toolbar>
       </AppBar>
 
