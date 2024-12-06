@@ -41,6 +41,7 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        alert("Invalid Credentials");
       });
   };
 
@@ -96,7 +97,7 @@ const Login = () => {
 
         <TextField
           type="Email"
-          id="outlined-basic"
+          id="outlined-basic1"
           label="Email"
           variant="outlined"
           sx={{ width: "300px" }}

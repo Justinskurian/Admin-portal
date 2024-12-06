@@ -29,7 +29,7 @@ router.post("/mentor/add", async (req, res) => {
   } catch (error) {
     res.status(404).send("unable to send  data");
   }
-});
+}); 
 
 router.delete("/mentor/del/:id", async (req, res) => {
   try {

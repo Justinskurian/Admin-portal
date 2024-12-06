@@ -11,6 +11,7 @@ router.post("/login", async (req, res) => {
   try {
     // Admin validation
     const admin = await adminModel.findOne({ email: req.body.email });
+    console.log("Admin:", admin);
     if (admin) {
       if (
         admin.email == req.body.email &&

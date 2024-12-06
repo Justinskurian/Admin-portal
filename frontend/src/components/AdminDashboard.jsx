@@ -42,7 +42,7 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       <h2>Admin Dashboard</h2>
-      <Link to={'/login'}> <button onClick={handleLogout} className="logout-btn" onClick={()=>{
+      <Link to={'/login'}> <button  className="logout-btn" onClick={()=>{
         sessionStorage.removeItem('token');
 
       }}>Logout</button></Link>
