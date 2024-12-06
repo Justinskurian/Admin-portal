@@ -10,44 +10,50 @@ router.use(express.json());
 
 router.post("/login", async (req, res) => {
   try {
-<<<<<<< HEAD
-    const user = await mentorModel.findOne({ email: req.body.email });
-    
-    const payload = { email: "admin123@gmail.com", password: "Admin123" };
-
-    if (
-      req.body.email == "admin123@gmail.com" &&
-      req.body.password == "Admin123"
-    ) {
-      const token = jwt.sign(payload, "adminMentor");
-      console.log(token);
-      res.status(200).send({ message: "Login successful", token: token });
-    } 
-    else if (user.password == req.body.password) {
-      res.status(200).send({ message: "Login successful" });
-    } 
-    else if(!user){
-      res.send({message:"user not found"})
-    }
-
-     else {
-      res.status(404).send({ message: "Invalid credentials"});
-=======
+    // Admin validation
     const admin = await adminModel.findOne({ email: req.body.email });
-
-    if (!admin) {
-      res.status(201).send({ message: "User not found" });
+    if (admin) {
+      if (
+        admin.email == req.body.email &&
+        admin.password == req.body.password
+      ) {
+        const payload = { email: admin.email, password: admin.password };
+        const token = jwt.sign(payload, process.env.adminJwt, {
+          expiresIn: "1h",
+        });
+        return res
+          .status(200)
+          .send({ message: "Login successful", token: token, role: "admin" });
+      } else {
+        return res.status(401).send({ message: "Invalid Login credentials" });
+      }
     }
-    else if (
-      admin.email==req.body.email &&
-      admin.password == req.body.password
-    ) {
-      const payload = { email: admin.email, password:admin.password};
-      const token = jwt.sign(payload, process.env.jwt, { expiresIn: "1h" });
-      res.status(200).send({ message: "Login successful", token: token });
->>>>>>> 1eabcbb8ccef03d7970daefed9c5e5e16a805050
+
+    //Mentor Validation
+    const mentor = await mentorModel.findOne({ email: req.body.email });
+    if (mentor) {
+      if (
+        mentor.email == req.body.email &&
+        mentor.password == req.body.password
+      ) {
+        const payload = { email: mentor.email, password: mentor.password };
+        const token = jwt.sign(payload, process.env.mentorJwt, {
+          expiresIn: "1h",
+        });
+        return res
+          .status(200)
+          .send({ message: "Login Successful", token: token, role: "mentor" });
+      } else {
+        return res.status(401).send({ message: "Invalid Login credentials" });
+      }
+    }
+
+    // If both are not found
+    else {
+      return res.status(404).send({ message: "User not found" });
     }
   } catch (error) {
+    console.log("error while login", error);
     res.status(500).send({ message: "Internal Server Error" });
   }
 });

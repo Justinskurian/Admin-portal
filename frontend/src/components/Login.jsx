@@ -28,8 +28,13 @@ const Login = () => {
 
         if (res.data.token) {
           sessionStorage.setItem("token", res.data.token);
-
-          navigate("/admindash");
+          if (res.data.role === "admin") {
+            navigate("/admindash");
+          } else if (res.data.role === "mentor") {
+            navigate("/mentordash");
+          } else {
+            navigate("/login");
+          }
         } else {
           navigate("/login");
         }
