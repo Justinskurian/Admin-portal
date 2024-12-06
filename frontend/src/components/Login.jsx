@@ -22,7 +22,7 @@ const Login = () => {
 
   const click1 = () => {
     axiosInstance
-      .post("http://localhost:3000/admin/login", loginForm)
+      .post("http://localhost:3000/login", loginForm)
       .then((res) => {
         alert(res.data.message);
 
