@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import '../AdminDashboard.css';
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+
 
 const AdminDashboard = () => {
   const [projectTopics, setProjectTopics] = useState([]);
@@ -9,35 +11,64 @@ const AdminDashboard = () => {
   const [topicName, setTopicName] = useState('');
 
   // Add project topic
-  const handleAddTopic = () => {
+  const handleAddTopic = async () => {
     if (topicName) {
-      setProjectTopics([...projectTopics, topicName]);
-      setTopicName('');
+      try {
+        const response = await axios.post('http://localhost:3000/project/add', { name: topicName });
+        console.log(response.data); 
+        setProjectTopics([...projectTopics, { name: topicName }]);
+        setTopicName('');
+      } catch (error) {
+        console.error('Error adding project topic:', error);
+      }
     }
   };
+  
 
   // Delete project topic
-  const handleDeleteTopic = (index) => {
-    setProjectTopics(projectTopics.filter((_, i) => i !== index));
-  };
-
-  // Add mentor
-  const handleAddMentor = () => {
-    if (mentor.name && mentor.email && mentor.projectTopic) {
-      setMentors([...mentors, mentor]);
-      setMentor({ name: '', email: '', phone: '', password: '', projectTopic: '' });
+  const handleDeleteTopic = async (index) => {
+    const topicId = projectTopics[index]._id; // Assuming `projectTopics` contains `_id`
+    try {
+      await axios.delete(`http://localhost:3000/project/del/${topicId}`);
+      setProjectTopics(projectTopics.filter((_, i) => i !== index));
+    } catch (error) {
+      console.error('Error deleting project topic:', error);
     }
   };
-
-  // Delete mentor
-  const handleDeleteMentor = (index) => {
-    setMentors(mentors.filter((_, i) => i !== index));
+  
+  // Add mentor
+  const handleAddMentor = async () => {
+    if (mentor.name && mentor.email && mentor.projectTopic) {
+      try {
+        const response = await axios.post('http://localhost:3000/mentor/add', mentor);
+        console.log(response.data); 
+        setMentors([...mentors, mentor]);
+        setMentor({ name: '', email: '', phone: '', password: '', projectTopic: '' });
+      } catch (error) {
+        console.error('Error adding mentor:', error);
+      }
+    }
   };
+  
+  // Delete mentor
+  const handleDeleteMentor = async (index) => {
+    const mentorId = mentors[index]._id; 
+    try {
+      await axios.delete(`http://localhost:3000/mentor/del/${mentorId}`);
+      setMentors(mentors.filter((_, i) => i !== index));
+    } catch (error) {
+      console.error('Error deleting mentor:', error);
+    }
+  };
+  
 
   // Logout
   const handleLogout = () => {
+    sessionStorage.removeItem('token');
     alert('Logged out');
+    window.location.href = '/login'; 
   };
+  
 
   return (
     <div className="admin-dashboard">
