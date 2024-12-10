@@ -4,11 +4,21 @@ body {
   margin: 0;
   padding: 0;
 }
-.container {
+.container{
   width: 90%;
   margin: 0 auto;
   margin-top: 10px;
   padding: 0;
+}
+.containerlogin{
+  margin: 0 auto;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  width: 70vh;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .logo-image {
@@ -32,14 +42,40 @@ body {
   background-color: #ff6536 !important;
   box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.4) !important;
 }
+.addButton {
+  background-color: #0099cc !important;
+  color: white !important;
+  text-transform: lowercase !important;
+  border-radius: 20px !important;
+  font-size: 1rem !important;
+  height: 40px !important;
+  transition: all 0.3s ease !important;
+  padding: 5px 20px !important;
+}
+.addButton:hover {
+  background-color: #00a545 !important;
+  box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.4) !important;
+}
+.deleteButton {
+  background-color: #ff6536 !important;
+  color: white !important;
+  text-transform: lowercase !important;
+  border-radius: 20px !important;
+  font-size: 1rem !important;
+  height: 40px !important;
+  transition: all 0.3s ease !important;
+  padding: 5px 20px !important;
+}
+.deleteButton:hover {
+  background-color: #f20800 !important;
+  box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.4) !important;
+}
 
 #bo1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
-  margin-top: 5%;
-  border-color: #0099cc;
+  margin: 10%;  
 }
 .login {
   font-size: 2.5rem !important;

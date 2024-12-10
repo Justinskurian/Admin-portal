@@ -1,29 +1,36 @@
-import React, { useState } from 'react';
-import '../AdminDashboard.css';
-import { Link } from 'react-router-dom'
-import axios from 'axios';
+import React, { useState } from "react";
+import "../AdminDashboard.css";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import AssignProject from "./AssignProject";
 
-
-const AdminDashboard = () => {
+const AdminDashboard = ({child}) => {
   const [projectTopics, setProjectTopics] = useState([]);
   const [mentors, setMentors] = useState([]);
-  const [mentor, setMentor] = useState({ name: '', email: '', phone: '', password: '', projectTopic: '' });
-  const [topicName, setTopicName] = useState('');
+  const [mentor, setMentor] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    projectTopic: "",
+  });
+  const [topicName, setTopicName] = useState("");
 
   // Add project topic
   const handleAddTopic = async () => {
     if (topicName) {
       try {
-        const response = await axios.post('http://localhost:3000/project/add', { name: topicName });
-        console.log(response.data); 
+        const response = await axios.post("http://localhost:3000/project/add", {
+          name: topicName,
+        });
+        console.log(response.data);
         setProjectTopics([...projectTopics, { name: topicName }]);
-        setTopicName('');
+        setTopicName("");
       } catch (error) {
-        console.error('Error adding project topic:', error);
+        console.error("Error adding project topic:", error);
       }
     }
   };
-  
 
   // Delete project topic
   const handleDeleteTopic = async (index) => {
@@ -32,53 +39,65 @@ const AdminDashboard = () => {
       await axios.delete(`http://localhost:3000/project/del/${topicId}`);
       setProjectTopics(projectTopics.filter((_, i) => i !== index));
     } catch (error) {
-      console.error('Error deleting project topic:', error);
+      console.error("Error deleting project topic:", error);
     }
   };
-  
+
   // Add mentor
   const handleAddMentor = async () => {
     if (mentor.name && mentor.email && mentor.projectTopic) {
       try {
-        const response = await axios.post('http://localhost:3000/mentor/add', mentor);
-        console.log(response.data); 
+        const response = await axios.post(
+          "http://localhost:3000/mentor/add",
+          mentor
+        );
+        console.log(response.data);
         setMentors([...mentors, mentor]);
-        setMentor({ name: '', email: '', phone: '', password: '', projectTopic: '' });
+        setMentor({
+          name: "",
+          email: "",
+          phone: "",
+          password: "",
+          projectTopic: "",
+        });
       } catch (error) {
-        console.error('Error adding mentor:', error);
+        console.error("Error adding mentor:", error);
       }
     }
   };
-  
+
   // Delete mentor
   const handleDeleteMentor = async (index) => {
-    const mentorId = mentors[index]._id; 
+    const mentorId = mentors[index]._id;
     try {
       await axios.delete(`http://localhost:3000/mentor/del/${mentorId}`);
       setMentors(mentors.filter((_, i) => i !== index));
     } catch (error) {
-      console.error('Error deleting mentor:', error);
+      console.error("Error deleting mentor:", error);
     }
   };
-  
 
   // Logout
   const handleLogout = () => {
-    sessionStorage.removeItem('token');
-    alert('Logged out');
-    window.location.href = '/login'; 
+    sessionStorage.removeItem("token");
+    alert("Logged out");
+    window.location.href = "/login";
   };
-  
 
   return (
     <div className="admin-dashboard">
       <h2>Admin Dashboard</h2>
-      <Link to={'/login'}> <button  className="logout-btn" onClick={()=>{
-        sessionStorage.removeItem('token');
-
-      }}>Logout</button></Link>
-      
-      
+      <Link to={"/login"}>
+        {" "}
+        <button
+          className="logout-btn"
+          onClick={() => {
+            sessionStorage.removeItem("token");
+          }}
+        >
+          Logout
+        </button>
+      </Link>
 
       <section>
         <h3>Project Topics</h3>
@@ -86,7 +105,12 @@ const AdminDashboard = () => {
           {projectTopics.map((topic, index) => (
             <li key={index}>
               {topic}
-              <button onClick={() => handleDeleteTopic(index)} className="delete-btn">Delete</button>
+              <button
+                onClick={() => handleDeleteTopic(index)}
+                className="delete-btn"
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>
@@ -97,7 +121,9 @@ const AdminDashboard = () => {
             onChange={(e) => setTopicName(e.target.value)}
             placeholder="Add new project topic"
           />
-          <button onClick={handleAddTopic} className="add-btn">Add Topic</button>
+          <button onClick={handleAddTopic} className="add-btn">
+            Add Topic
+          </button>
         </div>
       </section>
 
@@ -107,7 +133,12 @@ const AdminDashboard = () => {
           {mentors.map((mentor, index) => (
             <li key={index}>
               {mentor.name} - {mentor.projectTopic}
-              <button onClick={() => handleDeleteMentor(index)} className="delete-btn">Delete</button>
+              <button
+                onClick={() => handleDeleteMentor(index)}
+                className="delete-btn"
+              >
+                Delete
+              </button>
             </li>
           ))}
         </ul>
@@ -140,13 +171,17 @@ const AdminDashboard = () => {
             type="text"
             placeholder="Project Topic"
             value={mentor.projectTopic}
-            onChange={(e) => setMentor({ ...mentor, projectTopic: e.target.value })}
+            onChange={(e) =>
+              setMentor({ ...mentor, projectTopic: e.target.value })
+            }
           />
-          <button onClick={handleAddMentor} className="add-btn">Add Mentor</button>
+          <button onClick={handleAddMentor} className="add-btn">
+            Add Mentor
+          </button>
         </div>
       </section>
+      {child}
     </div>
   );
 };
-
 export default AdminDashboard;

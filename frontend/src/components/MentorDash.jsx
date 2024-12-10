@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AppBar,  Toolbar,  Typography,  Container,  Card,  CardContent,  CardActions,  Button,  TextField,  Table,  TableBody,  TableCell,  TableContainer,  TableHead,  TableRow,  Select, MenuItem,  InputLabel, FormControl,
+import { AppBar,  Toolbar,  Typography,  Container,  Card,  CardContent,  CardActions,  Button,  TextField,  Table,  TableBody,  TableCell,  TableContainer,  TableHead,  TableRow,  Select, MenuItem,  InputLabel, FormControl, Box,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -18,16 +18,55 @@ const MentorDashboard = () => {
   return (
     <div>
       {/* Header */}
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Mentor Dashboard
-          </Typography>
-         <Link to={'/login'}><Button className="button">Logout</Button></Link>
-        </Toolbar>
-      </AppBar>
+      <div className="container">
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar
+            position="static"
+            sx={{
+              backgroundColor: "white",
+              boxShadow: "none",
+            }}
+          >
+            <Toolbar>
+              <div className="logo">
+                <img
+                  src="src/images/logo.jpg"
+                  alt="Logo"
+                  className="logo-image"
+                />
+              </div>
+              <Box sx={{ flexGrow: 1 }}>
+                <Typography
+                  sx={{
+                    color: "#0099cc",
+                    fontWeight: 600,
+                    fontSize: "2.1rem",
+                    textAlign: "left",
+                    marginTop: "5px",
+                    lineHeight: "1.1",
+                  }}
+                >
+                  MENTOR
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "gray",
+                    fontSize: "1.1rem",
+                    textAlign: "left",
+                  }}
+                >
+                  Dashboard
+                </Typography>
+              </Box>
+              <Link to={"/login"}>
+                <Button className="button">Logout</Button>
+              </Link>
+            </Toolbar>
+          </AppBar>
+        </Box>
+        </div>
 
-      <Container sx={{ mt: 4 }}>
+      <Container sx={{ mt: 4 }} style={{marginTop:"5%"}}>
         <Typography variant="h4" gutterBottom>
           Projects
         </Typography>
@@ -115,11 +154,11 @@ const MentorDashboard = () => {
             sx={{ mt: 2 }}
           />
           <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
-            <Button className="button">
-              Add Material
+            <Button className="addButton">
+              Add
             </Button>
-            <Button className="button">
-              Delete Material
+            <Button className="deleteButton">
+              Delete
             </Button>
           </div>
         </div>

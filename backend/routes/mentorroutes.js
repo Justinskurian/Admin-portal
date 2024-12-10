@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mentorModel = require("../models/mentor");
+const projectModel = require("../models/project")
 router.use(express.json());
 
 router.post("/mentor/add", async (req, res) => {
@@ -34,12 +35,21 @@ router.delete("/submission/del/:id", async (req, res) => {
   }
 });
 
-router.get("/submission/view", async (req, res) => {
+router.get("/projects", async (req, res) => {
+  try {
+    var data1 = await projectModel.find();
+    res.status(200).send(data1);
+  } catch (error) {
+    res.status(404).send("unable to get data");
+  }
+});
+
+router.get("/mentors", async (req, res) => {
   try {
     var data1 = await mentorModel.find();
     res.status(200).send(data1);
   } catch (error) {
-    res.status(404).send("unable to getdata");
+    res.status(404).send("unable to get data");
   }
 });
 
@@ -63,12 +73,17 @@ router.delete("/material/del/:id", async (req, res) => {
   }
 });
 
-router.get("/project/view", async (req, res) => {
+router.get("/project/:mentorId", async (req, res) => {
+  const mentorId = req.params;
   try {
-    var data1 = await mentorModel.find();
-    res.status(200).send(data1);
+    const mentor = await mentorModel.findById(mentorId).populate("assignedProjects");
+    if(!mentor){
+      res.status(404).send({message:"Mentor not found"});
+    }
+    res.status(200).send({projects:mentor.assignedProjects});
   } catch (error) {
-    res.status(404).send("unable to getdata");
+    console.log("error while fetching projects",error)
+    res.status(500).send({message:"Internal server error"});
   }
 });
 

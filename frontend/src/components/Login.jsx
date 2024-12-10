@@ -24,7 +24,7 @@ const Login = () => {
     axiosInstance
       .post("http://localhost:3000/login", loginForm)
       .then((res) => {
-        alert(res.data.message);
+        alert(res.data.message); 
 
         if (res.data.token) {
           sessionStorage.setItem("token", res.data.token);
@@ -46,7 +46,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+   <div className="container">
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
           position="static"
@@ -67,7 +67,7 @@ const Login = () => {
             <Box sx={{ flexGrow: 1 }}>
               <Typography
                 sx={{
-                  color: "rgb(0, 153, 204)",
+                  color: "#0099cc",
                   fontWeight: 600,
                   fontSize: "2.1rem",
                   textAlign: "left",
@@ -90,6 +90,7 @@ const Login = () => {
           </Toolbar>
         </AppBar>
       </Box>
+       <div className="containerlogin">
       <Box id="bo1" component="section">
         <Typography className="login">Login</Typography>
         <br />
@@ -121,6 +122,7 @@ const Login = () => {
           Login
         </Button>
       </Box>
+      </div>
     </div>
   );
 };
