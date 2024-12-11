@@ -26,9 +26,6 @@ function App() {
         <Route path="/mentordash" element={<MentorDashboard />} />
         <Route path="/admindash" element={<AdminDashboard child={<AssignProject/>}/>}/>
         <Route path="/projecttopic" element={<ProjectTopicForm/>}/>
-
-
-
       </Routes>
       </ThemeProvider>
     </>

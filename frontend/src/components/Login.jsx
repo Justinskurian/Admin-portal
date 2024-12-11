@@ -9,6 +9,7 @@ import {
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosinterceptors";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const Login = () => {
     axiosInstance
       .post("http://localhost:3000/login", loginForm)
       .then((res) => {
-        alert(res.data.message); 
+        toast.success(res.data.message);
 
         if (res.data.token) {
           sessionStorage.setItem("token", res.data.token);
@@ -41,12 +42,12 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
-        alert("Invalid Credentials");
+        toast.error("Invalid Credentials");
       });
   };
 
   return (
-   <div className="container">
+    <div className="container">
       <Box sx={{ flexGrow: 1 }}>
         <AppBar
           position="static"
@@ -90,38 +91,38 @@ const Login = () => {
           </Toolbar>
         </AppBar>
       </Box>
-       <div className="containerlogin">
-      <Box id="bo1" component="section">
-        <Typography className="login">Login</Typography>
-        <br />
-        <br />
+      <div className="containerlogin">
+        <Box id="bo1" component="section">
+          <Typography className="login">Login</Typography>
+          <br />
+          <br />
 
-        <TextField
-          type="Email"
-          id="outlined-basic1"
-          label="Email"
-          variant="outlined"
-          sx={{ width: "300px" }}
-          name="email"
-          onChange={change1}
-        />
-        <br />
-        <br />
-        <TextField
-          type="password"
-          id="outlined-basic"
-          label="Password"
-          variant="outlined"
-          sx={{ width: "300px" }}
-          name="password"
-          onChange={change1}
-        />
-        <br />
-        <br />
-        <Button className="button" onClick={click1}>
-          Login
-        </Button>
-      </Box>
+          <TextField
+            type="Email"
+            id="outlined-basic1"
+            label="Email"
+            variant="outlined"
+            sx={{ width: "300px" }}
+            name="email"
+            onChange={change1}
+          />
+          <br />
+          <br />
+          <TextField
+            type="password"
+            id="outlined-basic"
+            label="Password"
+            variant="outlined"
+            sx={{ width: "300px" }}
+            name="password"
+            onChange={change1}
+          />
+          <br />
+          <br />
+          <Button className="button" onClick={click1}>
+            Login
+          </Button>
+        </Box>
       </div>
     </div>
   );

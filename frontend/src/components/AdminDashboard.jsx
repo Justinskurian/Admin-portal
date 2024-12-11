@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../AdminDashboard.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import AssignProject from "./AssignProject";
+import { toast } from "react-toastify";
 
 const AdminDashboard = ({child}) => {
   const [projectTopics, setProjectTopics] = useState([]);
@@ -80,7 +80,7 @@ const AdminDashboard = ({child}) => {
   // Logout
   const handleLogout = () => {
     sessionStorage.removeItem("token");
-    alert("Logged out");
+    toast("Logged out");
     window.location.href = "/login";
   };
 
@@ -166,14 +166,6 @@ const AdminDashboard = ({child}) => {
             placeholder="Password"
             value={mentor.password}
             onChange={(e) => setMentor({ ...mentor, password: e.target.value })}
-          />
-          <input
-            type="text"
-            placeholder="Project Topic"
-            value={mentor.projectTopic}
-            onChange={(e) =>
-              setMentor({ ...mentor, projectTopic: e.target.value })
-            }
           />
           <button onClick={handleAddMentor} className="add-btn">
             Add Mentor

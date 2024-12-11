@@ -3,6 +3,19 @@
 body {
   margin: 0;
   padding: 0;
+  background: linear-gradient(
+    106.37deg,
+    #fff5e9 29.63%,
+    #cce7ff 90.85%
+  );
+}
+.appglass{
+  display: flex;
+  height: 97%;
+  width: 97%;
+  border-radius: 1rem;
+  background-color: var(--glass);
+  overflow: hidden;
 }
 .container{
   width: 90%;

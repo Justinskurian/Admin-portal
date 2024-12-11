@@ -9,6 +9,8 @@ import {
   FormControl,
   InputLabel,
 } from "@mui/material";
+import { toast } from "react-toastify";
+
 
 const AssignProject = () => {
   const [mentors, setMentors] = useState([]);
@@ -42,10 +44,10 @@ const AssignProject = () => {
         "http://localhost:3000/admin/assignProject",
         { mentorId: selectedMentor, projectId: selectedProject }
       );
-      alert(res.data.message);
+      toast(res.data.message);
     } catch (error) {
       console.log("Error assigning project", error);
-      alert("Failed to assign project");
+      toast.error("Failed to assign project");
     }
   };
 
