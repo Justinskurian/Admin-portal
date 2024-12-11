@@ -12,7 +12,6 @@ const AdminDashboard = ({child}) => {
     email: "",
     phone: "",
     password: "",
-    projectTopic: "",
   });
   const [topicName, setTopicName] = useState("");
 
@@ -23,11 +22,11 @@ const AdminDashboard = ({child}) => {
         const response = await axios.post("http://localhost:3000/admin/project/add", {
           title: topicName
         });
-        console.log(response.data);
-        setProjectTopics([...projectTopics, { title: topicName }]);
-        setTopicName("");
+        toast.success(response.data)
+        setProjectTopics([...projectTopics, topicName]);
+        setTopicName({title:""});
       } catch (error) {
-        toast.error("error")
+        toast.error("Error adding project topic")
         console.error("Error adding project topic:", error);
       }
     }
