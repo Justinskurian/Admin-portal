@@ -20,13 +20,14 @@ const AdminDashboard = ({child}) => {
   const handleAddTopic = async () => {
     if (topicName) {
       try {
-        const response = await axios.post("http://localhost:3000/project/add", {
-          name: topicName,
+        const response = await axios.post("http://localhost:3000/admin/project/add", {
+          title: topicName
         });
         console.log(response.data);
-        setProjectTopics([...projectTopics, { name: topicName }]);
+        setProjectTopics([...projectTopics, { title: topicName }]);
         setTopicName("");
       } catch (error) {
+        toast.error("error")
         console.error("Error adding project topic:", error);
       }
     }
@@ -36,7 +37,7 @@ const AdminDashboard = ({child}) => {
   const handleDeleteTopic = async (index) => {
     const topicId = projectTopics[index]._id; // Assuming `projectTopics` contains `_id`
     try {
-      await axios.delete(`http://localhost:3000/project/del/${topicId}`);
+      await axios.delete(`http://localhost:3000/admin/project/del/${topicId}`);
       setProjectTopics(projectTopics.filter((_, i) => i !== index));
     } catch (error) {
       console.error("Error deleting project topic:", error);
@@ -45,12 +46,13 @@ const AdminDashboard = ({child}) => {
 
   // Add mentor
   const handleAddMentor = async () => {
-    if (mentor.name && mentor.email && mentor.projectTopic) {
+    if (mentor.name && mentor.email ) {
       try {
         const response = await axios.post(
-          "http://localhost:3000/mentor/add",
+          "http://localhost:3000/admin/mentor/add",
           mentor
         );
+        toast.success(response.data)
         console.log(response.data);
         setMentors([...mentors, mentor]);
         setMentor({
@@ -58,10 +60,10 @@ const AdminDashboard = ({child}) => {
           email: "",
           phone: "",
           password: "",
-          projectTopic: "",
         });
       } catch (error) {
         console.error("Error adding mentor:", error);
+        toast.error('error',error)
       }
     }
   };
@@ -70,7 +72,7 @@ const AdminDashboard = ({child}) => {
   const handleDeleteMentor = async (index) => {
     const mentorId = mentors[index]._id;
     try {
-      await axios.delete(`http://localhost:3000/mentor/del/${mentorId}`);
+      await axios.delete(`http://localhost:3000/admin/mentor/del/${mentorId}`);
       setMentors(mentors.filter((_, i) => i !== index));
     } catch (error) {
       console.error("Error deleting mentor:", error);

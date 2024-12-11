@@ -8,6 +8,7 @@ import MentorDashboard from "./components/MentorDash";
 import AdminDashboard from "./components/AdminDashboard";
 import ProjectTopicForm from "./components/ProjectTopicForm";
 import AssignProject from "./components/AssignProject";
+import Sidebar from "./components/Sidebar";
 
 const theme = createTheme({
   typography: {
@@ -26,6 +27,8 @@ function App() {
         <Route path="/mentordash" element={<MentorDashboard />} />
         <Route path="/admindash" element={<AdminDashboard child={<AssignProject/>}/>}/>
         <Route path="/projecttopic" element={<ProjectTopicForm/>}/>
+        <Route path="/sidebar" element={<Sidebar />}></Route>
+
       </Routes>
       </ThemeProvider>
     </>
