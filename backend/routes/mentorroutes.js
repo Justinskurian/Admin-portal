@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const mentorModel = require("../models/mentor");
 const projectModel = require("../models/project")
+const referenceModel = require("../models/referenceMaterials")
+
 router.use(express.json());
 
 router.post("/mentor/add", async (req, res) => {
@@ -56,7 +58,7 @@ router.get("/mentors", async (req, res) => {
 router.post("/material/add", async (req, res) => {
   try {
     var item1 = req.body;
-    var data1 = new mentorModel(item1);
+    var data1 = new referenceModel(item1);
     await data1.save();
     res.status(200).send("data added successfully");
   } catch (error) {
@@ -64,9 +66,19 @@ router.post("/material/add", async (req, res) => {
   }
 });
 
+
+
+router.get("/material/get", async (req, res) => {
+  try {
+    var data1 = await referenceModel.find();
+    res.status(200).send(data1);
+  } catch (error) {
+    res.status(404).send("unable to get data");
+  }
+});
 router.delete("/material/del/:id", async (req, res) => {
   try {
-    await mentorModel.findByIdAndDelete(req.params.id);
+    await referenceModel.findByIdAndDelete(req.params.id);
     res.status(200).send("deleted successfully");
   } catch (error) {
     res.status(404).send("unable to delete data");
