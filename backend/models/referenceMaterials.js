@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const referenceSchema = new mongoose.Schema({
   title: String,
-  link: String,
+  file: String
 });
 
 const referenceMaterials = mongoose.model(
-  "referenceMaterials",
+  "materials",
   referenceSchema
 );
 

@@ -10,6 +10,7 @@ import {
   InputLabel,
 } from "@mui/material";
 import { toast } from "react-toastify";
+import "./styles/Forms.css"
 
 
 const AssignProject = () => {
@@ -53,14 +54,14 @@ const AssignProject = () => {
 
   return (
     <div>
-      <Box
+      <Box className="form-container"
         sx={{
           maxWidth: "400px",
-          margin: "auto",
           textAlign: "center",
           padding: "20px",
           border: "1px solid #ddd",
           borderRadius: "10px",
+          marginTop:"3rem",
         }}
       >
         <Typography variant="h5" gutterBottom>
@@ -95,7 +96,7 @@ const AssignProject = () => {
             ))}
           </Select>
         </FormControl>
-        <Button variant="contained" onClick={handleAssign}>
+        <Button className="add-btn" onClick={handleAssign}>
           Assign Project
         </Button>
       </Box>

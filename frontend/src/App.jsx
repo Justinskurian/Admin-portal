@@ -5,10 +5,13 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import Login from "./components/Login";
 import MentorDashboard from "./components/MentorDash";
-import AdminDashboard from "./components/AdminDashboard";
 import ProjectTopicForm from "./components/ProjectTopicForm";
-import AssignProject from "./components/AssignProject";
-import Sidebar from "./components/Sidebar";
+import AssignProject from "./components/AdminComponents/AssignProject";
+import AdminAddMentor from "./components/AdminComponents/AdminAddMentor";
+import AdminAddProject from "./components/AdminComponents/AdminAddProject";
+import AdminContent from "./components/AdminComponents/AdminContent";
+import AdminDashboard from "./components/AdminDashboard";
+import Reference from "./components/Reference";
 
 const theme = createTheme({
   typography: {
@@ -25,9 +28,14 @@ function App() {
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/mentordash" element={<MentorDashboard />} />
-        <Route path="/admindash" element={<AdminDashboard child={<AssignProject/>}/>}/>
         <Route path="/projecttopic" element={<ProjectTopicForm/>}/>
-        <Route path="/sidebar" element={<Sidebar />}></Route>
+        <Route path="/admindash" element={<AdminDashboard child={<AdminContent/>} />}></Route>
+        <Route path="/addmentor" element={<AdminDashboard child={<AdminAddMentor/>} />}></Route>
+        <Route path="/addproject" element={<AdminDashboard child={<AdminAddProject/>} />}></Route>
+        <Route path="/assignproject" element={<AdminDashboard child={<AssignProject/>} />}></Route>
+        <Route path="/reference" element={<Reference/>}></Route>
+
+
 
       </Routes>
       </ThemeProvider>

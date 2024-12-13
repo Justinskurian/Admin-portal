@@ -52,9 +52,9 @@ const Login = () => {
         <AppBar
           position="static"
           sx={{
-            marginTop: "1%",
             backgroundColor: "white",
-            boxShadow: "none",
+            boxShadow:" 0 1px 10px rgba(0, 0, 0, 0.1)" ,
+            borderRadius:"20px",
           }}
         >
           <Toolbar>

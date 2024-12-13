@@ -2,28 +2,16 @@
 
 body {
   margin: 0;
-  padding: 0;
-  background: linear-gradient(
-    106.37deg,
-    #fff5e9 29.63%,
-    #cce7ff 90.85%
-  );
+  padding: 0px;
 }
-.appglass{
-  display: flex;
-  height: 97%;
-  width: 97%;
-  border-radius: 1rem;
-  background-color: var(--glass);
-  overflow: hidden;
-}
+
 .container{
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  margin-top: 10px;
   padding: 0;
 }
 .containerlogin{
+  background-color: #ffffff;
   margin: 0 auto;
   margin-top: 50px;
   justify-content: center;
@@ -55,33 +43,24 @@ body {
   background-color: #ff6536 !important;
   box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.4) !important;
 }
-.addButton {
-  background-color: #0099cc !important;
-  color: white !important;
-  text-transform: lowercase !important;
-  border-radius: 20px !important;
-  font-size: 1rem !important;
-  height: 40px !important;
-  transition: all 0.3s ease !important;
-  padding: 5px 20px !important;
+.delete-btn {
+  background-color: #ff4a3d;
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
 }
-.addButton:hover {
-  background-color: #00a545 !important;
-  box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.4) !important;
+
+.delete-btn:hover {
+  background-color: #d32f2f;
 }
-.deleteButton {
-  background-color: #ff6536 !important;
-  color: white !important;
-  text-transform: lowercase !important;
-  border-radius: 20px !important;
-  font-size: 1rem !important;
-  height: 40px !important;
-  transition: all 0.3s ease !important;
-  padding: 5px 20px !important;
+.edit-btn {
+  background-color: #4CAF50;
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
+
 }
-.deleteButton:hover {
-  background-color: #f20800 !important;
-  box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.4) !important;
+
+.edit-btn:hover {
+  background-color: #388E3C;
 }
 
 #bo1 {
@@ -114,3 +93,7 @@ body {
   padding: 3% 2%;
   border-radius: 30px
 }
+#lb1{
+  margin-left: 600px;
+    
+  }

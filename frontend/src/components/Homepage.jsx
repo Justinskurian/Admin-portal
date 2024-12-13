@@ -17,6 +17,7 @@ const Homepage = () => {
             sx={{
               backgroundColor: "white",
               boxShadow: "none",
+              borderRadius:"20px",
             }}
           >
             <Toolbar>

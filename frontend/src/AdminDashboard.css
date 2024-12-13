@@ -1,13 +1,8 @@
-
+/* 
 .admin-dashboard {
     font-family: Arial, sans-serif;
     padding: 20px;
-  }
-  
-  h2 {
-    text-align: center;
-    color: #4CAF50;
-  }
+  } 
   
   h3 {
     color: #333;
@@ -44,13 +39,7 @@
     background-color: #388E3C;
   }
   
-  .delete-btn {
-    background-color: #f44336;
-  }
-  
-  .delete-btn:hover {
-    background-color: #d32f2f;
-  }
+ 
   
   .form-container {
     margin: 20px 0;
@@ -76,4 +65,4 @@
   .logout-btn:hover {
     background-color: #007B9C;
   }
-  
+   */
