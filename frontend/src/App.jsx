@@ -9,6 +9,7 @@ import AdminDashboard from "./components/AdminDashboard";
 import ProjectTopicForm from "./components/ProjectTopicForm";
 import AssignProject from "./components/AssignProject";
 import Sidebar from "./components/Sidebar";
+import Reference from "./components/Reference";
 
 const theme = createTheme({
   typography: {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/admindash" element={<AdminDashboard child={<AssignProject/>}/>}/>
         <Route path="/projecttopic" element={<ProjectTopicForm/>}/>
         <Route path="/sidebar" element={<Sidebar />}></Route>
+        <Route path="/reference" element={<Reference/>}></Route>
 
       </Routes>
       </ThemeProvider>
