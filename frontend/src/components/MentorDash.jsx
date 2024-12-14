@@ -1,15 +1,34 @@
 import React, { useEffect, useState } from "react";
-import { AppBar,  Toolbar,  Typography,  Container,  Card,  CardContent,  CardActions,  Button,  TextField,  Table,  TableBody,  TableCell,  TableContainer,  TableHead,  TableRow,  Select, MenuItem,  InputLabel, FormControl, Box,
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Container,
+  Card,
+  CardContent,
+  CardActions,
+  Button,
+  TextField,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
+  Box,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosinterceptors";
 
 const MentorDashboard = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const [selectedProject, setSelectedProject] = useState(null);
   const [filter, setFilter] = useState("");
-
 
   const handleSelectProject = (projectId) => {
     setSelectedProject(projectId);
@@ -18,8 +37,6 @@ const MentorDashboard = () => {
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
-
-  
 
   return (
     <div>
@@ -70,14 +87,13 @@ const MentorDashboard = () => {
             </Toolbar>
           </AppBar>
         </Box>
-        </div>
+      </div>
 
-      <Container sx={{ mt: 4 }} style={{marginTop:"5%"}}>
+      <Container sx={{ mt: 4 }} style={{ marginTop: "5%" }}>
         <Typography variant="h4" gutterBottom>
           Projects
         </Typography>
         <div style={{ display: "flex", gap: "1rem" }}>
-          
           <Card sx={{ width: "30%" }}>
             <CardContent>
               <Typography variant="h6">Project Title</Typography>
@@ -117,7 +133,6 @@ const MentorDashboard = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-          
                   <TableRow>
                     <TableCell>
                       <TextField placeholder="Name" size="small" />
@@ -126,16 +141,29 @@ const MentorDashboard = () => {
                       <TextField placeholder="Status" size="small" />
                     </TableCell>
                     <TableCell>
-                      <TextField type="number" placeholder="Marks" size="small" />
+                      <TextField
+                        type="number"
+                        placeholder="Marks"
+                        size="small"
+                      />
                     </TableCell>
                     <TableCell>
                       <TextField placeholder="Comments" size="small" />
                     </TableCell>
                     <TableCell>
-                    <Button variant="contained" color="secondary" size="small">
-                          View Project
-                        </Button>
-                      <Button variant="contained" color="primary" size="small" sx={{ mr: 1 }}>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        size="small"
+                      >
+                        View Project
+                      </Button>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        size="small"
+                        sx={{ mr: 1 }}
+                      >
                         Save
                       </Button>
                       <Button variant="outlined" color="error" size="small">
@@ -153,43 +181,22 @@ const MentorDashboard = () => {
           <Typography variant="h5" sx={{ mt: 4 }}>
             Reference Materials
           </Typography>
-         
-          
-
-
- 
-
-
-
-
-
-
-
 
           <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
-          
-           <Link to={'/reference'}> <center><Button className="addButton" >
-            
-              Add
-              
-            </Button>
-            
-            </center>
+            <Link to={"/reference"}>
+              {" "}
+              <center>
+                <Button className="addButton">Add</Button>
+              </center>
             </Link>
-            <Link to={'/reference'}>
-            <Button className="deleteButton" >
-            
-            
-                          Delete
-                        </Button>
-                        </Link>
-                        <Link to={'/reference'}> <center><Button className="addButton" >
-            
-              View
-              
-            </Button>
-            
-            </center>
+            <Link to={"/reference"}>
+              <Button className="deleteButton">Delete</Button>
+            </Link>
+            <Link to={"/reference"}>
+              {" "}
+              <center>
+                <Button className="addButton">View</Button>
+              </center>
             </Link>
           </div>
         </div>

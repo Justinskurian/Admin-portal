@@ -35,8 +35,6 @@ function App() {
         <Route path="/assignproject" element={<AdminDashboard child={<AssignProject/>} />}></Route>
         <Route path="/reference" element={<Reference/>}></Route>
 
-
-
       </Routes>
       </ThemeProvider>
     </>

@@ -48,7 +48,7 @@ router.post("/project/add", async (req, res) => {
     await data1.save();
     res.status(200).send("project added successfully");
   } catch (error) {
-    res.status(404).send("unable to send  add project");
+    res.status(404).send("unable to add project");
   }
 });
 
@@ -65,6 +65,7 @@ router.delete("/project/del/:id", async (req, res) => {
 //Assigning Project to a mentor
 router.post("/assignProject", async (req, res) => {
   const { mentorId, projectId } = req.body;
+  
 
   // Checking for mentor and project
   try {
@@ -78,11 +79,15 @@ router.post("/assignProject", async (req, res) => {
     }
 
     // Checking if the project is already assigned
+    if (project.assignedTo?.toString() === mentorId) {
+      return res.status(400).send({ message: "Project is already assigned to this mentor" });
+    }
     if (project.assignedTo) {
       return res
         .status(400)
         .send({ message: "Project is already assigned to another mentor" });
     }
+  
 
     // Assigning project and pushing to mentor database
     project.assignedTo = mentorId;

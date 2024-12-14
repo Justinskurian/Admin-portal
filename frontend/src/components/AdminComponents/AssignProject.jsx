@@ -48,7 +48,7 @@ const AssignProject = () => {
       toast(res.data.message);
     } catch (error) {
       console.log("Error assigning project", error);
-      toast.error("Failed to assign project");
+      toast.error(error.response.data.message);
     }
   };
 

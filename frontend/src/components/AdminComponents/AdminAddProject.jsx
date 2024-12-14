@@ -7,6 +7,7 @@ import "./styles/Forms.css"
 const AdminAddProject = () => {
 
     const [topicName, setTopicName] = useState("");
+    const [projectTopics, setProjectTopics] = useState("");
 
     // Add project topic
     const handleAddTopic = async () => {
@@ -15,8 +16,8 @@ const AdminAddProject = () => {
           const response = await axiosInstance.post("http://localhost:3000/admin/project/add", {
             title: topicName
           });
-          toast.success(response.data)
           setProjectTopics([...projectTopics, topicName]);
+          toast.success(response.data)
           setTopicName({title:""});
         } catch (error) {
           toast.error("Error adding project topic")
