@@ -55,6 +55,10 @@ router.get("/mentors", async (req, res) => {
   }
 });
 
+
+
+
+
 router.post("/material/add", async (req, res) => {
   try {
     var item1 = req.body;
@@ -74,6 +78,10 @@ router.get("/material/get", async (req, res) => {
     res.status(404).send("unable to get data");
   }
 });
+
+
+
+
 router.delete("/material/del/:id", async (req, res) => {
   try {
     await referenceModel.findByIdAndDelete(req.params.id);
