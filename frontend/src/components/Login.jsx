@@ -32,6 +32,7 @@ const Login = () => {
           if (res.data.role === "admin") {
             navigate("/admindash");
           } else if (res.data.role === "mentor") {
+            sessionStorage.setItem("mentorId", res.data.mentorId);
             navigate("/mentordash");
           } else {
             navigate("/login");

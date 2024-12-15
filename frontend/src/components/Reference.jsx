@@ -15,6 +15,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosinterceptors";
+import { toast } from "react-toastify";
 
 const Reference = () => {
   const location = useLocation();
@@ -42,10 +43,8 @@ const Reference = () => {
         .post("http://localhost:3000/mentor/material/add", form)
 
         .then((res) => {
-          alert(res.data);
+          toast.success(res.data);
           window.location.reload();
-          navigate("/reference");
-
           console.log(res);
         })
         .catch((error) => {
@@ -83,52 +82,7 @@ const Reference = () => {
   };
   return (
     <div className="container">
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar
-          position="static"
-          sx={{
-            marginTop: "1%",
-            backgroundColor: "white",
-            boxShadow: "none",
-          }}
-        >
-          <Toolbar>
-            <div className="logo">
-              <img
-                src="src/images/logo.jpg"
-                alt="Logo"
-                className="logo-image"
-              />
-            </div>
-            <Box sx={{ flexGrow: 1 }}>
-              <Typography
-                sx={{
-                  color: "#0099cc",
-                  fontWeight: 600,
-                  fontSize: "2.1rem",
-                  textAlign: "left",
-                  marginTop: "5px",
-                  lineHeight: "1.1",
-                }}
-              >
-                ICTAK
-              </Typography>
-              <Typography
-                sx={{
-                  color: "gray",
-                  fontSize: "1.1rem",
-                  textAlign: "left",
-                }}
-              >
-                PROJECT PORTAL
-              </Typography>
-            </Box>
-            <Link to={"/login"}>
-              <Button className="button">Logout</Button>
-            </Link>
-          </Toolbar>
-        </AppBar>
-      </Box>
+
       <center>
         <br />
         <br />
@@ -181,13 +135,14 @@ const Reference = () => {
           </TableHead>
           <TableBody>
             {data.map((row) => (
+              
               <TableRow
                 key={row.name}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
                 <TableCell align="left">{row.title}</TableCell>
-                <TableCell align="right">{row.file}</TableCell>
-
+                <TableCell align="right">
+                  <iframe src={row.file} ></iframe></TableCell>
                 <Button
                   className="deleteButton"
                   onClick={() => click2(row._id)}

@@ -41,7 +41,7 @@ router.post("/login", async (req, res) => {
         });
         return res
           .status(200)
-          .send({ message: "Login Successful", token: token, role: "mentor" });
+          .send({ message: "Login Successful", token: token, role: "mentor", mentorId:mentor._id });
       } else {
         return res.status(401).send({ message: "Invalid Login credentials" });
       }

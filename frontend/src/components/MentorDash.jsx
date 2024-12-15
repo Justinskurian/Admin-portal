@@ -20,23 +20,45 @@ import {
   InputLabel,
   FormControl,
   Box,
+  ListItem,
+  ListItemText,
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import axiosInstance from "../axiosinterceptors";
+import axios from "axios";
 
 const MentorDashboard = () => {
   const navigate = useNavigate();
-
   const [selectedProject, setSelectedProject] = useState(null);
   const [filter, setFilter] = useState("");
 
   const handleSelectProject = (projectId) => {
     setSelectedProject(projectId);
   };
-
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
   };
+
+  const [projects, setProjects] = useState([]);
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const mentorId = sessionStorage.getItem("mentorId")
+      console.log("mentor ID",mentorId)
+      if(!mentorId){
+        console.log("Mentor Id not found")
+        return;
+      }
+      try {
+        const res = await axios.get(
+          `http://localhost:3000/mentor/project/${mentorId}`
+        );
+        console.log("projects response:",res.data)
+        setProjects(res.data.projects);
+      } catch (error) {
+        console.log("Error fetching", error);
+      }
+    };
+    fetchProjects();
+  }, []);
 
   return (
     <div>
@@ -96,12 +118,21 @@ const MentorDashboard = () => {
         <div style={{ display: "flex", gap: "1rem" }}>
           <Card sx={{ width: "30%" }}>
             <CardContent>
-              <Typography variant="h6">Project Title</Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" onClick={() => handleSelectProject(1)}>
+              {projects.map((project) => (
+                <ListItem key={project._id}>
+                  <ListItemText
+                    primary={project.title}
+                    secondary={project.description}
+                    
+                  />
+                                <Button size="small" onClick={() => handleSelectProject(1)}>
                 View Submissions
               </Button>
+                </ListItem>
+              ))}
+            </CardContent>
+            <CardActions>
+
             </CardActions>
           </Card>
         </div>

@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const mentorModel = require("../models/mentor");
-const projectModel = require("../models/project")
-const referenceModel = require("../models/referenceMaterials")
+const projectModel = require("../models/project");
+const referenceModel = require("../models/referenceMaterials");
 
 router.use(express.json());
 
@@ -66,8 +66,6 @@ router.post("/material/add", async (req, res) => {
   }
 });
 
-
-
 router.get("/material/get", async (req, res) => {
   try {
     var data1 = await referenceModel.find();
@@ -86,16 +84,18 @@ router.delete("/material/del/:id", async (req, res) => {
 });
 
 router.get("/project/:mentorId", async (req, res) => {
-  const mentorId = req.params;
+  const { mentorId } = req.params;
   try {
-    const mentor = await mentorModel.findById(mentorId).populate("assignedProjects");
-    if(!mentor){
-      res.status(404).send({message:"Mentor not found"});
+    const mentor = await mentorModel
+      .findById(mentorId)
+      .populate({ path: "assignedProjects", model: projectModel });
+    if (!mentor) {
+      res.status(404).send({ message: "Mentor not found" });
     }
-    res.status(200).send({projects:mentor.assignedProjects});
+    res.status(200).send({ projects: mentor.assignedProjects });
   } catch (error) {
-    console.log("error while fetching projects",error)
-    res.status(500).send({message:"Internal server error"});
+    console.log("error while fetching projects", error);
+    res.status(500).send({ message: "Internal server error" });
   }
 });
 
