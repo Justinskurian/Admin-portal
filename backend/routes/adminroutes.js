@@ -61,6 +61,22 @@ router.delete("/project/del/:id", async (req, res) => {
   }
 });
 
+router.put("/mentor/edit/:id", async (req, res) => {
+  try {
+    await mentorModel.findByIdAndUpdate(req.params.id, req.body);
+    res.status(200).send("edited successfully");
+  } catch (error) {
+    res.status(404).send("unable to edit data");
+  }
+});
+router.put("/project/edit/:id", async (req, res) => {
+  try {
+    await projectModel.findByIdAndUpdate(req.params.id, req.body);
+    res.status(200).send("edited successfully");
+  } catch (error) {
+    res.status(404).send("unable to edit data");
+  }
+});
 
 //Assigning Project to a mentor
 router.post("/assignProject", async (req, res) => {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./styles/AdminDash.css";
 import axiosInstance from "../../axiosinterceptors";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AdminContent = () => {
   //Get Mentor
@@ -10,7 +11,6 @@ const AdminContent = () => {
     axiosInstance
       .get("http://localhost:3000/mentor/mentors")
       .then((res) => {
-        console.log(res);
         setMentor(res.data);
       })
       .catch((error) => {
@@ -40,7 +40,6 @@ const AdminContent = () => {
     axiosInstance
       .get("http://localhost:3000/mentor/projects")
       .then((res) => {
-        console.log(res);
         setProject(res.data);
       })
       .catch((error) => {
@@ -63,10 +62,16 @@ const AdminContent = () => {
         toast.error("Error deleting project");
       });
   };
+const navigate=useNavigate();
+  function update_mentor(mentor) {
+    navigate("/addmentor", { state: { mentor } });
+  }
+  function update_project(project) {
+    navigate("/addproject", { state: { project } });
+  }
 
   return (
     <div>
-
       {/* Mentor and Project Listing */}
       <div className="both-list">
         {/* Mentor List */}
@@ -82,7 +87,9 @@ const AdminContent = () => {
                 </div>
                 <span>
                   <button
-                    onClick={() => handleDeleteMentor(index)}
+                    onClick={() => {
+                      update_mentor(data);
+                    }}
                     className="edit-btn"
                   >
                     Edit
@@ -113,7 +120,9 @@ const AdminContent = () => {
                 </div>
                 <span>
                   <button
-                    onClick={() => handleDeleteMentor(index)}
+                                       onClick={() => {
+                                        update_project(data);
+                                      }}
                     className="edit-btn"
                   >
                     Edit

@@ -1,42 +1,72 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axiosInstance from "../../axiosinterceptors";
 import "./styles/Forms.css"
+import { useLocation } from "react-router-dom";
 
 
 const AdminAddProject = () => {
-
-    const [topicName, setTopicName] = useState("");
-    const [projectTopics, setProjectTopics] = useState("");
-
-    // Add project topic
-    const handleAddTopic = async () => {
-      if (topicName) {
-        try {
-          const response = await axiosInstance.post("http://localhost:3000/admin/project/add", {
-            title: topicName
-          });
-          setProjectTopics([...projectTopics, topicName]);
-          toast.success(response.data)
-          setTopicName({title:""});
-        } catch (error) {
-          toast.error("Error adding project topic")
-          console.error("Error adding project topic:", error);
-        }
-      }
-    };
+  const location = useLocation();
+  const [project, setProject] = useState({
+    title: "",
+    description:"",
+  });
+  
+  // Prepopulate the form if editing
+  useEffect(() => {
+    if (location.state && location.state.project) {
+      setProject({
+        title: location.state.project.title || "",
+        description:location.state.project.description || "",
+      });
+    } else {
+      setProject({
+      });
+    }
+  }, [location.state]);
+  
+  // Add or Edit Project
+  const handleAddProject = () => {
+    if (location.state && location.state.project && location.state.project._id) {
+      // Edit Project
+      axiosInstance
+        .put(`http://localhost:3000/admin/project/edit/${location.state.project._id}`, project)
+        .then((res) => {
+          toast(res.data);
+        })
+        .catch((error) => {
+          console.error("Error updating project:", error);
+        });
+    } else {
+      // Add project
+      axiosInstance
+        .post(`http://localhost:3000/admin/project/add`, project)
+        .then((res) => {
+          toast(res.data);
+        })
+        .catch((error) => {
+          console.error("Error adding project:", error);
+        });
+    }
+  };
 
   return (
     <div>
        <div className="form-container">
           <input
             type="text"
-            value={topicName}
-            onChange={(e) => setTopicName(e.target.value)}
-            placeholder="Add new project topic"
+            value={project.title}
+            onChange={(e) => setProject({ ...project, title: e.target.value })}
+            placeholder="Add project topic"
           />
-          <button onClick={handleAddTopic} className="add-btn">
-            Add Topic
+                    <input
+            type="text"
+            value={project.description}
+            onChange={(e) => setProject({ ...project, description: e.target.value })}
+            placeholder="Add project description"
+          />
+          <button onClick={handleAddProject} className="add-btn">
+          {location.state ? "Update Project" : "Add Project"}
           </button>
         </div>
     </div>
