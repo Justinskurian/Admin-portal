@@ -133,7 +133,7 @@ const Login = () => {
                     onChange={change1}
                   />
                   <br />
-                  Are you an admin or mentor?
+                  Please enter your credentials to access the Admin or Mentor dashboard.
                   <br />
                   <br />
                   <TextField
