@@ -81,8 +81,7 @@ router.put("/project/edit/:id", async (req, res) => {
 //Assigning Project to a mentor
 router.post("/assignProject", async (req, res) => {
   const { mentorId, projectId } = req.body;
-  
-
+   
   // Checking for mentor and project
   try {
     const mentor = await mentorModel.findById(mentorId);

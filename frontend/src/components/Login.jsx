@@ -2,6 +2,9 @@ import {
   AppBar,
   Box,
   Button,
+  Card,
+  CardMedia,
+  Grid2,
   TextField,
   Toolbar,
   Typography,
@@ -48,82 +51,110 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar
-          position="static"
-          sx={{
-            backgroundColor: "white",
-            boxShadow:" 0 1px 10px rgba(0, 0, 0, 0.1)" ,
-            borderRadius:"20px",
-          }}
-        >
-          <Toolbar>
-            <div className="logo">
-              <img
-                src="src/images/logo.jpg"
-                alt="Logo"
-                className="logo-image"
-              />
-            </div>
-            <Box sx={{ flexGrow: 1 }}>
-              <Typography
-                sx={{
-                  color: "#0099cc",
-                  fontWeight: 600,
-                  fontSize: "2.1rem",
-                  textAlign: "left",
-                  marginTop: "5px",
-                  lineHeight: "1.1",
-                }}
-              >
-                ICTAK
-              </Typography>
-              <Typography
-                sx={{
-                  color: "gray",
-                  fontSize: "1.1rem",
-                  textAlign: "left",
-                }}
-              >
-                PROJECT PORTAL
-              </Typography>
-            </Box>
-          </Toolbar>
-        </AppBar>
-      </Box>
-      <div className="containerlogin">
-        <Box id="bo1" component="section">
-          <Typography className="login">Login</Typography>
-          <br />
-          <br />
-
-          <TextField
-            type="Email"
-            id="outlined-basic1"
-            label="Email"
-            variant="outlined"
-            sx={{ width: "300px" }}
-            name="email"
-            onChange={change1}
-          />
-          <br />
-          <br />
-          <TextField
-            type="password"
-            id="outlined-basic"
-            label="Password"
-            variant="outlined"
-            sx={{ width: "300px" }}
-            name="password"
-            onChange={change1}
-          />
-          <br />
-          <br />
-          <Button className="button" onClick={click1}>
-            Login
-          </Button>
+    <div>
+      <div className="loginhome">
+        <Box sx={{ flexGrow: 1 }}>
+          <AppBar
+            position="static"
+            sx={{
+              backgroundColor: "white",
+              boxShadow: "none",
+              borderRadius: "20px",
+              margin: 0,
+            }}
+          >
+            <Toolbar>
+              <div className="logo">
+                <img
+                  src="src/images/logo.jpg"
+                  alt="Logo"
+                  className="logo-image"
+                />
+              </div>
+              <Box sx={{ flexGrow: 1 }}>
+                <Typography
+                  sx={{
+                    color: "#27374d",
+                    fontWeight: 600,
+                    fontSize: "2.1rem",
+                    textAlign: "left",
+                    lineHeight: "1.1",
+                  }}
+                >
+                  ICTAK
+                </Typography>
+                <Typography
+                  sx={{
+                    color: "gray",
+                    fontSize: "1.1rem",
+                    textAlign: "left",
+                  }}
+                >
+                  PROJECT PORTAL
+                </Typography>
+              </Box>
+            </Toolbar>
+          </AppBar>
         </Box>
+
+        <div className="loginhero">
+          {/* Hero Section */}
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid2 container spacing={15}>
+              <Grid2 size={6}>
+                <Card
+                  sx={{
+                    boxShadow: "none",
+                  }}
+                >
+                  <CardMedia
+                    sx={{ height: 450 }}
+                    image="src/images/login.jpg"
+                  />
+                </Card>
+              </Grid2>
+              <Grid2 size={6}>
+                <Card
+                  sx={{
+                    margin: "10px",
+                    boxShadow: "none",
+                  }}
+                >
+                  <Typography className="login">Login</Typography>
+                  <br />
+                  <br />
+                  <TextField
+                    type="Email"
+                    id="outlined-basic1"
+                    label="Email"
+                    variant="outlined"
+                    sx={{ width: "400px" }}
+                    name="email"
+                    onChange={change1}
+                  />
+                  <br />
+                  Are you an admin or mentor?
+                  <br />
+                  <br />
+                  <TextField
+                    type="password"
+                    id="outlined-basic"
+                    label="Password"
+                    variant="outlined"
+                    sx={{ width: "400px" }}
+                    name="password"
+                    onChange={change1}
+                  />
+                  <br />
+                  <br />
+                  <Button className="button" onClick={click1}>
+                    Login
+                  </Button>
+                </Card>
+              </Grid2>
+            </Grid2>
+          </Box>
+        </div>
       </div>
     </div>
   );

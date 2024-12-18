@@ -10,6 +10,7 @@ const Homepage = () => {
   return (
     // Navbar and Logo
     <div>
+      <div className="home">
       <div className="container">
         <Box sx={{ flexGrow: 1 }}>
           <AppBar
@@ -31,7 +32,7 @@ const Homepage = () => {
               <Box sx={{ flexGrow: 1 }}>
                 <Typography
                   sx={{
-                    color: "rgb(0, 153, 204)",
+                    color: "#27374d",
                     fontWeight: 600,
                     fontSize: "2.1rem",
                     textAlign: "left",
@@ -59,7 +60,7 @@ const Homepage = () => {
         </Box>
 
         {/* Hero Section */}
-        <Box sx={{ flexGrow: 1 }} style={{ marginTop: "3%" }}>
+        <Box sx={{ flexGrow: 1 }} style={{ marginTop: "1%" }}>
           <Grid2 container spacing={2}>
             <Grid2 size={6}>
               <Card
@@ -77,13 +78,13 @@ const Homepage = () => {
                   boxShadow: "none",
                 }}
               >
-                <Typography style={{ marginTop: "25px" }}>
+                <Typography >
                   Welcome To ICTAK Project Portal
                 </Typography>
                 <br />
                 <Typography
                   sx={{
-                    color: "#0099cc",
+                    color: "#27374d",
                     fontWeight: 600,
                     fontSize: "3.1rem",
                     textAlign: "left",
@@ -97,9 +98,9 @@ const Homepage = () => {
                 </Typography>
                 <br />
                 <Typography>
-                  From humble beginnings in 2014, ICT Academy of Kerala has
+                  From humble beginnings in 2014, ICT Academy of Kerala<br/> has
                   evolved into the premier hub for ICT and innovation training
-                  statewide.
+                  statewide.<br />
                   <br /> Enroll in our courses and shape your future!
                 </Typography>
                 <br />
@@ -112,9 +113,9 @@ const Homepage = () => {
             </Grid2>
           </Grid2>
         </Box>
-
+<div className="other-contents" >
         {/* Other Contents */}
-        <Box sx={{ flexGrow: 1 }} style={{ marginTop: "3%" }}>
+        <Box sx={{ flexGrow: 1 }} >
           <Grid2 container spacing={2}>
             <Grid2 size={3}>
               <Card
@@ -136,7 +137,7 @@ const Homepage = () => {
               >
                 <Typography
                   sx={{
-                    color: "#0099cc",
+                    color: "#27374d",
                     fontWeight: 600,
                     fontSize: "2rem",
                     textAlign: "left",
@@ -175,7 +176,7 @@ const Homepage = () => {
               >
                 <Typography
                   sx={{
-                    color: "#0099cc",
+                    color: "#27374d",
                     fontWeight: 600,
                     fontSize: "2rem",
                     textAlign: "left",
@@ -198,7 +199,7 @@ const Homepage = () => {
           </Grid2>
         </Box>
       </div>
-
+      </div>
       <div className="footer">
         <Box sx={{ flexGrow: 1 }}>
           <Typography
@@ -265,6 +266,7 @@ const Homepage = () => {
         info@ictkerala.org | +91 75 940 51437 <br /> © 2024 ICT Academy of
         Kerala
       </Typography>
+      </div>
     </div>
   );
 };

@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 const AdminHeader = () => {
   const Carddata = [
-    { number: 0, title: "Projects" },
-    { number: 0, title: "Mentors" },
-    { number: 0, title: "Admins" },
+    { number: 6, title: "Projects" },
+    { number: 5, title: "Mentors" },
+    { number: 1, title: "Admins" },
   ];
 
   // Logout
@@ -27,10 +27,10 @@ const AdminHeader = () => {
   return (
     <div>
       <div className="content-header">
-        <h1 className="main-Heading">Dashboard</h1>
+        <h1 className="main-Heading">Admin Dashboard</h1><a href="/login">
         <button className="logout-button" onClick={handleLogout}>
           Logout
-        </button>
+        </button></a>
       </div>
       <div className="card-container">
         {Carddata.map((item) => (

@@ -4,7 +4,24 @@ body {
   margin: 0;
   padding: 0px;
 }
-
+.home{
+  display:flex;
+  flex-direction: column;
+  gap: 2.3rem;
+  height: 94vh;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.other-contents{
+  display:flex;
+  flex-direction: column;
+  gap: 2.3rem;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 6rem;
+}
 .container{
   width: 100%;
   margin: 0 auto;
@@ -28,20 +45,19 @@ body {
   margin-right: 10px;
 }
 .button {
-  background-color: #0099cc !important;
-  color: white !important;
-  text-transform: lowercase !important;
-  border-radius: 30px !important;
-  font-size: 1.2rem !important;
-  height: 60px !important;
-  transition: all 0.3s ease !important;
-  border: 0 !important;
-  padding: 12px 30px !important;
+  background-color: #27374d !important;
+  color: #ffffff !important;
+  padding: 0.8rem 1.2rem !important;
+  font-size: 1rem !important;
+  border: none !important;
+  border-radius: 10px !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease !important;
 }
 
 .button:hover {
-  background-color: #ff6536 !important;
-  box-shadow: 0px 4px 10px rgba(255, 87, 34, 0.4) !important;
+    background-color: #1f2c3d !important;
+  box-shadow: 0px 4px 10px #0e131a !important;
 }
 .delete-btn {
   background-color: #ff4a3d;
@@ -72,28 +88,42 @@ body {
 .login {
   font-size: 2.5rem !important;
   font-weight: 500 !important;
-  color: #0099cc;
+  color: #27374d;
 }
 .footer {
+  border-radius: 20px;
   padding-top: 2%;
-  margin-top: 3%;
-  background-color: #5fd7ff;
+  background-color: #27374d;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin-top: 0.5rem;
 }
 .section-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
+
 }
 .section {
   max-width: 300px;
   flex: 1;
-  margin: 2% 100px 4%;
+  margin: 2% 100px 3%;
   background-color: #ffffff;
   padding: 3% 2%;
-  border-radius: 30px
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
 }
 #lb1{
   margin-left: 600px;
-    
+  }
+  .loginhome{
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
+  }
+  .loginhero{
+    padding: 2rem 3rem;
+    justify-content: center;
   }
