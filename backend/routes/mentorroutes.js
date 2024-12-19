@@ -3,8 +3,24 @@ const router = express.Router();
 const mentorModel = require("../models/mentor");
 const projectModel = require("../models/project");
 const referenceModel = require("../models/referenceMaterials");
+const multer=require("multer");
+const path = require("path");
 
 router.use(express.json());
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./files");
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() ;
+    cb(null,uniqueSuffix + file.originalname);
+  }
+});
+require("../models/referenceMaterials");
+const ma1=mongoose.model("materials");
+
+const upload = multer({ storage:storage });
 
 router.get("/mentors", async (req, res) => {
   try {
