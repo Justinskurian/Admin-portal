@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
+const multer=require("multer");
+const mongoose=require("mongoose");
+
 const mentorModel = require("../models/mentor");
 const projectModel = require("../models/project");
 const referenceModel = require("../models/referenceMaterials");
-const multer=require("multer");
-const path = require("path");
 
 router.use(express.json());
 
@@ -22,10 +23,29 @@ const ma1=mongoose.model("materials");
 
 const upload = multer({ storage:storage });
 
-router.get("/mentors", async (req, res) => {
+
+router.post("/material/add",upload.single("file") ,async (req, res) => {
+
+const title=req.body.title;
+const fileName=req.file.filename;
   try {
-    var data1 = await mentorModel.find();
-    res.status(200).send(data1);
+
+ await   ma1.create({title:title,file:fileName});
+
+
+  
+    res.send({status:"ok"});
+  } catch (error) {
+    res.status(404).send("unable to send  data");
+  }
+});
+
+router.get("/material/get", async (req, res) => {
+  try {
+    ma1.find({}).then((data)=>{
+      res.send({status:"deleted successfully",data:data});
+    })
+
   } catch (error) {
     res.status(404).send("unable to get data");
   }
@@ -48,6 +68,23 @@ router.get("/submission", async (req, res) => {
     res.status(200).send(data4);
   } catch (error) {
     res.status(404).send("Unable to get data");
+  }
+});
+router.get("/projects", async (req, res) => {
+  try {
+    var data1 = await projectModel.find();
+    res.status(200).send(data1);
+  } catch (error) {
+    res.status(404).send("unable to get data");
+  }
+});
+
+router.get("/mentors", async (req, res) => {
+  try {
+    var data1 = await mentorModel.find();
+    res.status(200).send(data1);
+  } catch (error) {
+    res.status(404).send("unable to get data");
   }
 });
 

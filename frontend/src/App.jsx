@@ -9,8 +9,8 @@ import AdminAddMentor from "./components/AdminComponents/AdminAddMentor";
 import AdminAddProject from "./components/AdminComponents/AdminAddProject";
 import AdminContent from "./components/AdminComponents/AdminContent";
 import AdminDashboard from "./components/AdminDashboard";
-import MentorDash from "./components/MentorDashboard";
-import MentorDashboard from "./components/MentorComponents/MentorDash";
+import MentorDash from "./components/MentorDash";
+import MentorDashboard from "./components/MentorComponents/MentorDashboard";
 import Reference from "./components/MentorComponents/Reference";
 
 

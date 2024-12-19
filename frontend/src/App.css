@@ -60,23 +60,39 @@ body {
   box-shadow: 0px 4px 10px #0e131a !important;
 }
 .delete-btn {
-  background-color: #ff4a3d;
-  border-radius: 10px;
-  transition: 0.2s ease-in-out;
+  background-color: #ffffff;
+  color: #e53935;
+  border: 2px solid #e53935;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .delete-btn:hover {
-  background-color: #d32f2f;
+  background-color: #e53935;
+  color: #ffffff;
+  transform: translateY(-2px);
 }
-.edit-btn {
-  background-color: #4CAF50;
-  border-radius: 10px;
-  transition: 0.2s ease-in-out;
 
+.edit-btn {
+  background-color: #ffffff;
+  color: #43a047;
+  border: 2px solid #43a047;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .edit-btn:hover {
-  background-color: #388E3C;
+  background-color: #43a047;
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 #bo1 {

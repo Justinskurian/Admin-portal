@@ -1,75 +1,60 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import axiosInstance from "../../axiosinterceptors";
 import { toast } from "react-toastify";
 
 const Reference = () => {
-  const location = useLocation();
-  const [form, setForm] = useState({
-    title: "",
-    file: "",
-  });
-  useEffect(() => {
-    if (location.state != null) {
-      setForm({
-        ...form,
-        title: location.state.val.title,
-        file: location.state.val.file,
-      });
-    } else {
-      setForm({ ...form, title: "", file: "" });
-    }
-  }, []);
+  const [title, setTitle] = useState("");
+  const [file, setFile] = useState("");
+  const [allImage, setAllImage] = useState(null);
+
   const navigate = useNavigate();
 
-  function click1() {
-    console.log(form);
-    if (location.state == null) {
-      axiosInstance
-        .post("http://localhost:3000/mentor/material/add", form)
+  const submitImage = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
 
-        .then((res) => {
-          toast.success(res.data);
-          window.location.reload();
-          console.log(res);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    formData.append("title", title);
+    formData.append("file", file);
+
+    const result = await axiosInstance.post(
+      "http://localhost:3000/mentor/material/add",
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
+    if (result.data.status == "ok") {
+      toast.success("uploaded succesfully");
+      window.location.reload();
+      getPdf();
     }
-  }
+  };
+  const showPdf = (pdf) => {
+    console.log(pdf);
+    window.open(`http://localhost:3000/files/${pdf}`, "_blank", "noreferrer");
+  };
 
-  const [data, setData] = useState([]);
   useEffect(() => {
-    axiosInstance
-      .get("http://localhost:3000/mentor/material/get", data)
-
-      .then((res) => {
-        console.log(res.data);
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    getPdf();
   }, []);
+  const getPdf = async () => {
+    const result = await axiosInstance.get(
+      "http://localhost:3000/mentor/material/get"
+    );
+    console.log(result.data.data);
+
+    setAllImage(result.data.data);
+  };
+
   const click2 = (id) => {
     axiosInstance
       .delete(`http://localhost:3000/mentor/material/del/${id}`)
 
       .then(() => {
+        toast.success("Deleted successfully");
+        getPdf();
         window.location.reload();
         navigate("/reference");
 
@@ -79,80 +64,69 @@ const Reference = () => {
         console.log(error);
       });
   };
+
   return (
-    <div className="container">
-
-      <center>
-        <br />
-        <br />
-        <br />
-        <br />
+    <div>
+      <div className="refcontent-header">
+      <form onSubmit={submitImage}>
         <Typography className="login">Reference Material</Typography>
-        <br />
-        <br />
-
+        <br/><br/>
         <TextField
           type="text"
           id="outlined-basic1"
           label="Title"
           variant="outlined"
-          sx={{ width: "500px" }}
-          value={form.title}
-          onChange={(e) => {
-            setForm({ ...form, title: e.target.value });
-          }}
+          sx={{ width: "400px" }}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <br />
         <br />
         <TextField
           type="file"
-          accept="application/pdf"
+          inputProps={{ accept: "application/pdf" }}
           id="outlined-basic"
           variant="outlined"
-          sx={{ width: "500px" }}
-          value={form.file}
-          onChange={(e) => {
-            setForm({ ...form, file: e.target.value });
-          }}
+          sx={{ width: "400px" }}
+          onChange={(e) => setFile(e.target.files[0])}
         />
         <br />
         <br />
-        <br />
 
-        <Button className="button" onClick={click1}>
+        <Button className="button" type="submit">
           submit
         </Button>
-      </center>
+      </form>
 
-      <TableContainer id="t1">
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell align="left">Title</TableCell>
-              <TableCell align="right">File</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((row) => (
-              
-              <TableRow
-                key={row.name}
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-              >
-                <TableCell align="left">{row.title}</TableCell>
-                <TableCell align="right">
-                  <iframe src={row.file} ></iframe></TableCell>
-                <Button
-                  className="deleteButton"
-                  onClick={() => click2(row._id)}
-                >
-                  Delete
-                </Button>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <div className="referencepdf">
+        <h6 className="login"> Uploaded pdf</h6>
+        <div>
+          {allImage == null
+            ? ""
+            : allImage.map((data) => {
+                return (
+                  <div>
+                    <h3>{data.title}</h3>
+                    <button
+                      className="edit-btn"
+                      onClick={() => showPdf(data.file)}
+                    >
+                      Show pdf
+                    </button>
+                    <button
+                      className="delete-btn"
+                      style={{ marginLeft: "30px" }}
+                      onClick={() => click2(data._id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                );
+              })}
+        </div>
+      </div>
+
+      </div>
+
     </div>
   );
 };

@@ -27,6 +27,14 @@ body {
     align-items: center;
     justify-content: space-between;
   }
+  .refcontent-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 25px;
+    gap: 3rem;
+  }
+  
 .logo {
   text-align: center;
   padding: 20px;
