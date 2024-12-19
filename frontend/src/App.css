@@ -57,7 +57,7 @@ body {
 
 .button:hover {
     background-color: #1f2c3d !important;
-  box-shadow: 0px 4px 10px #0e131a !important;
+  box-shadow: 0px 3px 5px #0e131a !important;
 }
 .delete-btn {
   background-color: #ffffff;

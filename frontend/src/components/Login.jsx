@@ -10,7 +10,7 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axiosInstance from "../axiosinterceptors";
 import { toast } from "react-toastify";
 
@@ -93,6 +93,9 @@ const Login = () => {
                   PROJECT PORTAL
                 </Typography>
               </Box>
+              <Link to={"/"}>
+                <Button className="button">Home</Button>
+              </Link>
             </Toolbar>
           </AppBar>
         </Box>
@@ -122,7 +125,10 @@ const Login = () => {
                 >
                   <Typography className="login">Login</Typography>
                   <br />
+                  Please enter your credentials to access the
+                  <br /> Admin or Mentor dashboard.
                   <br />
+                  <br /> <br />
                   <TextField
                     type="Email"
                     id="outlined-basic1"
@@ -132,8 +138,6 @@ const Login = () => {
                     name="email"
                     onChange={change1}
                   />
-                  <br />
-                  Please enter your credentials to access the Admin or Mentor dashboard.
                   <br />
                   <br />
                   <TextField
