@@ -88,16 +88,17 @@ const navigate=useNavigate();
                 <div className="mentor-details">
                   <h3>{data.name}</h3>
                 </div>
-                <div>
+
+                {/* <div>
   <select className="project-dropdown">
     <option value="">Assigned Projects</option>
     {data.assignedProjects.map((project) => (
       <option key={project._id} value={project._id}>
-        title :{project.title}
+        {project.title}
       </option>
     ))}
   </select>
-</div>
+</div> */}
                 <span>
                   <button
                     onClick={() => {

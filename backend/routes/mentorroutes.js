@@ -43,7 +43,7 @@ const fileName=req.file.filename;
 router.get("/material/get", async (req, res) => {
   try {
     ma1.find({}).then((data)=>{
-      res.send({status:"deleted successfully",data:data});
+      res.status(200).send({status:"deleted successfully",data:data});
     })
 
   } catch (error) {
@@ -83,8 +83,6 @@ router.get("/mentors", async (req, res) => {
   try {
     var data1 = await mentorModel.find();
     res.status(200).send(data1);
-    const mentors = await mentorModel.find().populate("assignedProjects");
-    res.status(200).send(mentors);
   } catch (error) {
     res.status(404).send("unable to get data");
   }
