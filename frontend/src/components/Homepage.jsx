@@ -24,7 +24,7 @@ const Homepage = () => {
             <Toolbar>
               <div className="logo">
                 <img
-                  src="src/images/logo.jpg"
+                  src="/images/logo.jpg"
                   alt="Logo"
                   className="logo-image"
                 />
@@ -68,7 +68,7 @@ const Homepage = () => {
                   boxShadow: "none",
                 }}
               >
-                <CardMedia sx={{ height: 450 }} image="src/images/cover.jpg" />
+                <CardMedia sx={{ height: 450 }} image="/images/cover.jpg" />
               </Card>
             </Grid2>
             <Grid2 size={6}>
@@ -124,7 +124,7 @@ const Homepage = () => {
                   margin: "10px",
                 }}
               >
-                <CardMedia sx={{ height: 300 }} image="src/images/admin.jpg" />
+                <CardMedia sx={{ height: 300 }} image="/images/admin.jpg" />
               </Card>
             </Grid2>
             <Grid2 size={3}>
@@ -163,7 +163,7 @@ const Homepage = () => {
                   boxShadow: "none",
                 }}
               >
-                <CardMedia sx={{ height: 300 }} image="src/images/mentor.jpg" />
+                <CardMedia sx={{ height: 300 }} image="/images/mentor.jpg" />
               </Card>
             </Grid2>
             <Grid2 size={3}>

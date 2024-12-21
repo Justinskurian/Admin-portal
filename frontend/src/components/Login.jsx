@@ -66,7 +66,7 @@ const Login = () => {
             <Toolbar>
               <div className="logo">
                 <img
-                  src="src/images/logo.jpg"
+                  src="/images/logo.jpg"
                   alt="Logo"
                   className="logo-image"
                 />
@@ -112,7 +112,7 @@ const Login = () => {
                 >
                   <CardMedia
                     sx={{ height: 450 }}
-                    image="src/images/login.jpg"
+                    image="/images/login.jpg"
                   />
                 </Card>
               </Grid2>

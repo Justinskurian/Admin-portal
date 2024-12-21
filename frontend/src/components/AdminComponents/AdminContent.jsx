@@ -5,8 +5,10 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const AdminContent = () => {
-  //Get Mentor
+
   const [mentor, setMentor] = useState([]);
+
+    //Get Mentor
   useEffect(() => {
     axiosInstance
       .get("http://localhost:3000/mentor/mentors")
@@ -18,6 +20,7 @@ const AdminContent = () => {
       });
   }, []);
 
+  
   // Delete Mentor
   const handleDeleteMentor = async (id) => {
     axiosInstance
@@ -85,6 +88,16 @@ const navigate=useNavigate();
                 <div className="mentor-details">
                   <h3>{data.name}</h3>
                 </div>
+                <div>
+  <select className="project-dropdown">
+    <option value="">Assigned Projects</option>
+    {data.assignedProjects.map((project) => (
+      <option key={project._id} value={project._id}>
+        title :{project.title}
+      </option>
+    ))}
+  </select>
+</div>
                 <span>
                   <button
                     onClick={() => {
