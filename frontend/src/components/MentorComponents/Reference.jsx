@@ -19,7 +19,7 @@ const Reference = () => {
     formData.append("file", file);
 
     const result = await axiosInstance.post(
-      "http://localhost:3000/mentor/material/add",
+      "https://project-admin-mentor-portal.onrender.com/mentor/material/add",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -33,7 +33,7 @@ const Reference = () => {
   };
   const showPdf = (pdf) => {
     console.log(pdf);
-    window.open(`http://localhost:3000/files/${pdf}`, "_blank", "noreferrer");
+    window.open(`https://project-admin-mentor-portal.onrender.com/files/${pdf}`, "_blank", "noreferrer");
   };
 
   useEffect(() => {
@@ -41,7 +41,7 @@ const Reference = () => {
   }, []);
   const getPdf = async () => {
     const result = await axiosInstance.get(
-      "http://localhost:3000/mentor/material/get"
+      "https://project-admin-mentor-portal.onrender.com/mentor/material/get"
     );
     console.log(result.data.data);
 
@@ -50,7 +50,7 @@ const Reference = () => {
 
   const click2 = (id) => {
     axiosInstance
-      .delete(`http://localhost:3000/mentor/material/del/${id}`)
+      .delete(`https://project-admin-mentor-portal.onrender.com/mentor/material/del/${id}`)
 
       .then(() => {
         toast.success("Deleted successfully");

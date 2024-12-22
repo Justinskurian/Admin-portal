@@ -37,7 +37,7 @@ const MentorDashboard = () => {
       }
       try {
         const res = await axios.get(
-          `http://localhost:3000/mentor/project/${mentorId}`
+          `https://project-admin-mentor-portal.onrender.com/mentor/project/${mentorId}`
         );
         setProjects(res.data.projects);
       } catch (error) {
@@ -75,7 +75,7 @@ const MentorDashboard = () => {
       const { _id: submissionId, ...updatedSubmission } = editSubmission;
 
       const res = await axios.put(
-        `http://localhost:3000/mentor/project/${projectId}/submission/${submissionId}`,
+        `https://project-admin-mentor-portal.onrender.com/mentor/project/${projectId}/submission/${submissionId}`,
         updatedSubmission
       );
 
@@ -104,7 +104,7 @@ const MentorDashboard = () => {
     try {
       const projectId = selectedProject;
       const res = await axios.delete(
-        `http://localhost:3000/mentor/project/${projectId}/submission/${submissionId}`
+        `https://project-admin-mentor-portal.onrender.com/mentor/project/${projectId}/submission/${submissionId}`
       );
 
       if (res.status === 200) {

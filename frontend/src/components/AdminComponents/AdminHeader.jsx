@@ -44,7 +44,7 @@ const AdminHeader = () => {
           <br />
           Admin
           <br />
-          Name
+          123
         </div>
       </div>
     </div>

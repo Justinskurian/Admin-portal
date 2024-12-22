@@ -24,10 +24,10 @@ const AssignProject = () => {
     const fetchData = async () => {
       try {
         const mentorData = await axios.get(
-          "http://localhost:3000/mentor/mentors"
+          "https://project-admin-mentor-portal.onrender.com/mentor/mentors"
         );
         const projectData = await axios.get(
-          "http://localhost:3000/mentor/projects"
+          "https://project-admin-mentor-portal.onrender.com/mentor/projects"
         );
         setMentors(mentorData.data);
         setProjects(projectData.data);
@@ -42,7 +42,7 @@ const AssignProject = () => {
   const handleAssign = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3000/admin/assignProject",
+        "https://project-admin-mentor-portal.onrender.com/admin/assignProject",
         { mentorId: selectedMentor, projectId: selectedProject }
       );
       toast(res.data.message);

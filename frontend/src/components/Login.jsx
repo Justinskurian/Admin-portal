@@ -26,7 +26,7 @@ const Login = () => {
 
   const click1 = () => {
     axiosInstance
-      .post("http://localhost:3000/login", loginForm)
+      .post("https://project-admin-mentor-portal.onrender.com/login", loginForm)
       .then((res) => {
         toast.success(res.data.message);
 
@@ -65,11 +65,7 @@ const Login = () => {
           >
             <Toolbar>
               <div className="logo">
-                <img
-                  src="/images/logo.jpg"
-                  alt="Logo"
-                  className="logo-image"
-                />
+                <img src="/images/logo.jpg" alt="Logo" className="logo-image" />
               </div>
               <Box sx={{ flexGrow: 1 }}>
                 <Typography
@@ -103,7 +99,7 @@ const Login = () => {
         <div className="loginhero">
           {/* Hero Section */}
           <Box sx={{ flexGrow: 1 }}>
-            <Grid2 container spacing={15}>
+            <Grid2 container spacing={1}>
               <Grid2 size={6}>
                 <Card
                   sx={{
@@ -111,8 +107,11 @@ const Login = () => {
                   }}
                 >
                   <CardMedia
-                    sx={{ height: 450 }}
+                    component="img"
+                    sx={{ maxWidth: "100%", height: "auto" }}
+                    style={{marginTop:"2rem",}}
                     image="/images/login.jpg"
+                    alt="Login cover"
                   />
                 </Card>
               </Grid2>
@@ -134,9 +133,16 @@ const Login = () => {
                     id="outlined-basic1"
                     label="Email"
                     variant="outlined"
-                    sx={{ width: "400px" }}
                     name="email"
                     onChange={change1}
+                    sx={{
+                      width: "100%",
+                      maxWidth: "400px", 
+                      margin: "0 auto", 
+                      "@media (max-width: 600px)": {
+                        width: "90%", 
+                      },
+                    }}
                   />
                   <br />
                   <br />
@@ -145,9 +151,16 @@ const Login = () => {
                     id="outlined-basic"
                     label="Password"
                     variant="outlined"
-                    sx={{ width: "400px" }}
                     name="password"
                     onChange={change1}
+                    sx={{
+                      width: "100%",
+                      maxWidth: "400px", 
+                      margin: "0 auto", 
+                      "@media (max-width: 600px)": {
+                        width: "90%", 
+                      },
+                    }}
                   />
                   <br />
                   <br />

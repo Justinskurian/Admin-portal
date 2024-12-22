@@ -30,7 +30,7 @@ const AdminAddProject = () => {
     if (location.state && location.state.project && location.state.project._id) {
       // Edit Project
       axiosInstance
-        .put(`http://localhost:3000/admin/project/edit/${location.state.project._id}`, project)
+        .put(`https://project-admin-mentor-portal.onrender.com/admin/project/edit/${location.state.project._id}`, project)
         .then((res) => {
           toast(res.data);
         })
@@ -40,7 +40,7 @@ const AdminAddProject = () => {
     } else {
       // Add project
       axiosInstance
-        .post(`http://localhost:3000/admin/project/add`, project)
+        .post(`https://project-admin-mentor-portal.onrender.com/admin/project/add`, project)
         .then((res) => {
           toast(res.data);
         })

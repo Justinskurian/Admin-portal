@@ -11,7 +11,7 @@ const AdminContent = () => {
     //Get Mentor
   useEffect(() => {
     axiosInstance
-      .get("http://localhost:3000/mentor/mentors")
+      .get("https://project-admin-mentor-portal.onrender.com/mentor/mentors")
       .then((res) => {
         setMentor(res.data);
       })
@@ -24,7 +24,7 @@ const AdminContent = () => {
   // Delete Mentor
   const handleDeleteMentor = async (id) => {
     axiosInstance
-      .delete(`http://localhost:3000/admin/mentor/del/${id}`)
+      .delete(`https://project-admin-mentor-portal.onrender.com/admin/mentor/del/${id}`)
       .then((res) => {
         toast(res.data);
         setTimeout(() => {
@@ -41,7 +41,7 @@ const AdminContent = () => {
   const [project, setProject] = useState([]);
   useEffect(() => {
     axiosInstance
-      .get("http://localhost:3000/mentor/projects")
+      .get("https://project-admin-mentor-portal.onrender.com/mentor/projects")
       .then((res) => {
         setProject(res.data);
       })
@@ -53,7 +53,7 @@ const AdminContent = () => {
   //Delete Project
   const handleDeleteProject = async (id) => {
     axiosInstance
-      .delete(`http://localhost:3000/admin/project/del/${id}`)
+      .delete(`https://project-admin-mentor-portal.onrender.com/admin/project/del/${id}`)
       .then((res) => {
         toast(res.data);
         setTimeout(() => {

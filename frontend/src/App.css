@@ -13,6 +13,7 @@ body {
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
 .other-contents{
   display:flex;
   flex-direction: column;
@@ -27,16 +28,12 @@ body {
   margin: 0 auto;
   padding: 0;
 }
-.containerlogin{
+.loginhero{
   background-color: #ffffff;
   margin: 0 auto;
-  margin-top: 50px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 5px;
-  width: 70vh;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
 }
 
 .logo-image {
@@ -118,7 +115,6 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-
 }
 .section {
   max-width: 300px;
@@ -128,7 +124,6 @@ body {
   padding: 3% 2%;
   border-radius: 30px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-
 }
 #lb1{
   margin-left: 600px;

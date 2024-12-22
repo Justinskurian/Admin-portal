@@ -11,6 +11,7 @@
   padding: 2rem;
   gap: 1.5rem;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .content-header {
@@ -43,6 +44,7 @@
   gap: 20px;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -90,11 +92,14 @@
   justify-content: space-between;
   margin-top: 2rem;
   gap: 5rem;
+  
 }
 .mentor-list {
   display: flex;
   flex-direction: column;
   width: 50%;
+  flex-wrap: wrap;
+
 }
 .list {
   display: flex;
@@ -102,6 +107,8 @@
   align-items: center;
   transition: 0.3s ease-in-out;
   justify-content: space-between;
+  flex-wrap: wrap;
+
 }
 .list:hover {
   background: #dde6ed;

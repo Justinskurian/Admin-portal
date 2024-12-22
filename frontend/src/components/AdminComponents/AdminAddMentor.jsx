@@ -37,7 +37,7 @@ const AdminAddMentor = () => {
     if (location.state && location.state.mentor && location.state.mentor._id) {
       // Edit mentor
       axiosInstance
-        .put(`http://localhost:3000/admin/mentor/edit/${location.state.mentor._id}`, mentor)
+        .put(`https://project-admin-mentor-portal.onrender.com/admin/mentor/edit/${location.state.mentor._id}`, mentor)
         .then((res) => {
           toast(res.data);
         })
@@ -47,7 +47,7 @@ const AdminAddMentor = () => {
     } else {
       // Add mentor
       axiosInstance
-        .post(`http://localhost:3000/admin/mentor/add`, mentor)
+        .post(`https://project-admin-mentor-portal.onrender.com/admin/mentor/add`, mentor)
         .then((res) => {
           toast(res.data);
         })
