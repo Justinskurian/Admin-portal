@@ -8,6 +8,7 @@ const Reference = () => {
   const [title, setTitle] = useState("");
   const [file, setFile] = useState("");
   const [allImage, setAllImage] = useState(null);
+  const [newdata, setnewdata]=useState([])
 
   const navigate = useNavigate();
 
@@ -34,7 +35,8 @@ const Reference = () => {
   const showPdf = (pdf) => {
     console.log(pdf);
     window.open(`https://project-admin-mentor-portal.onrender.com/files/${pdf}`, "_blank", "noreferrer");
-  };
+
+ };
 
   useEffect(() => {
     getPdf();
@@ -106,6 +108,8 @@ const Reference = () => {
                 return (
                   <div>
                     <h3>{data.title}</h3>
+                    {data.file}
+
                     <button
                       className="edit-btn"
                       onClick={() => showPdf(data.file)}

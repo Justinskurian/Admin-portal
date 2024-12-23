@@ -125,6 +125,7 @@ const Homepage = () => {
           </div>
           <div className="other-contents">
             {/* Other Contents */}
+            
             <Box sx={{ flexGrow: 1 }}>
               <Grid2 container spacing={2}>
                 <Grid2 size={3}>
