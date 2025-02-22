@@ -17,7 +17,7 @@ const AdminHeader = () => {
   //Getting the number of Admins
   useEffect(() => {
     axiosInstance
-      .get("http://localhost:3000/admin/admins")
+      .get("https://project-admin-mentor-portal.onrender.com/admin/admins")
       .then((res) => {
         setAdminCount(res.data.length); // Get the total number of admins
       })
