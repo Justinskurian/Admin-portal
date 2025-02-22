@@ -4,7 +4,7 @@ import {
   Button,
   Card,
   CardMedia,
-  Grid2,
+  Grid,
   TextField,
   Toolbar,
   Typography,
@@ -20,6 +20,8 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [showCredentials, setShowCredentials] = useState(false);
+
   const change1 = (e) => {
     setLoginform({ ...loginForm, [e.target.name]: e.target.value });
   };
@@ -49,6 +51,7 @@ const Login = () => {
         toast.error("Invalid Credentials");
       });
   };
+
 
   return (
     <div>
@@ -99,77 +102,81 @@ const Login = () => {
         <div className="loginhero">
           {/* Hero Section */}
           <Box sx={{ flexGrow: 1 }}>
-            <Grid2 container spacing={1}>
-              <Grid2 size={6}>
-                <Card
-                  sx={{
-                    boxShadow: "none",
-                  }}
-                >
+            <Grid container spacing={1}>
+              <Grid item xs={12} md={6}>
+                <Card sx={{ boxShadow: "none" }}>
                   <CardMedia
                     component="img"
-                    sx={{ maxWidth: "100%", height: "auto" }}
-                    style={{marginTop:"2rem",}}
+                    sx={{ maxWidth: "100%", height: "auto", marginTop: "2rem" }}
                     image="/images/login.jpg"
                     alt="Login cover"
                   />
                 </Card>
-              </Grid2>
-              <Grid2 size={6}>
-                <Card
-                  sx={{
-                    margin: "10px",
-                    boxShadow: "none",
-                  }}
-                >
+              </Grid>
+              <Grid item xs={12} md={6}>
+                <Card sx={{ margin: "10px", boxShadow: "none", padding: "20px" }}>
                   <Typography className="login">Login</Typography>
-                  <br />
-                  Please enter your credentials to access the
-                  <br /> Admin or Mentor dashboard.
-                  <br />
-                  <br /> <br />
+                  <Typography variant="body2" sx={{ marginBottom: "20px" }}>
+                    Please enter your credentials to access the Admin or Mentor dashboard.
+                  </Typography>
+
                   <TextField
                     type="Email"
-                    id="outlined-basic1"
                     label="Email"
                     variant="outlined"
                     name="email"
                     onChange={change1}
-                    sx={{
-                      width: "100%",
-                      maxWidth: "400px", 
-                      margin: "0 auto", 
-                      "@media (max-width: 600px)": {
-                        width: "90%", 
-                      },
-                    }}
+                    sx={{ width: "100%", maxWidth: "400px", marginBottom: "15px" }}
                   />
-                  <br />
-                  <br />
+
                   <TextField
                     type="password"
-                    id="outlined-basic"
                     label="Password"
                     variant="outlined"
                     name="password"
                     onChange={change1}
-                    sx={{
-                      width: "100%",
-                      maxWidth: "400px", 
-                      margin: "0 auto", 
-                      "@media (max-width: 600px)": {
-                        width: "90%", 
-                      },
-                    }}
-                  />
-                  <br />
-                  <br />
+                    sx={{ width: "100%", maxWidth: "400px", marginBottom: "15px" }}
+                  /><br/>
+
                   <Button className="button" onClick={click1}>
                     Login
-                  </Button>
+                  </Button><br/>
+
+                  {/* Click to Reveal Credentials Button */}
+                  <Box sx={{ marginTop: "20px" }}>
+                    <Button
+                      variant="outlined"
+                      color="primary"
+                      onClick={() => setShowCredentials(!showCredentials)}
+                    >
+                      Need login credentials?
+                    </Button>
+                  </Box>
+
+                  {/* Credentials Section */}
+                  {showCredentials && (
+                    <Box
+                      sx={{
+                        marginTop: "15px",
+                        padding: "15px",
+                        backgroundColor: "#dddddd",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      <Typography variant="body2">
+                        <strong>Admin Login:</strong> admin123@gmail.com | 
+                        <span id="admin-pass"> Admin123 </span>
+                      </Typography>
+
+                      <Typography variant="body2">
+                        <strong>Mentor Login:</strong> Akhila123@gmail.com | 
+                        <span id="mentor-pass"> Akhila12345 </span>
+                      </Typography>
+                    </Box>
+                  )}
                 </Card>
-              </Grid2>
-            </Grid2>
+              </Grid>
+            </Grid>
           </Box>
         </div>
       </div>

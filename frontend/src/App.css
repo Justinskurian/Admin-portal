@@ -109,6 +109,8 @@ body {
   border-radius: 20px;
   padding-top: 2%;
   background-color: #27374d;
+  background-color: #bbbcd7;
+
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   margin-top: 0.5rem;
 }
@@ -140,3 +142,4 @@ body {
     padding: 1rem 3rem;
     justify-content: center;
   }
+  

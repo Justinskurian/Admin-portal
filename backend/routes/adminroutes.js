@@ -8,6 +8,15 @@ const projectModel = require("../models/project");
 
 router.use(express.json());
 
+router.get("/admins", async (req, res) => {
+  try {
+    var data10 = await adminModel.find();
+    res.status(200).send(data10);
+  } catch (error) {
+    res.status(404).send("unable to get data");
+  }
+});
+
 router.post("/admin/add", async (req, res) => {
   try {
     var item2 = req.body;
